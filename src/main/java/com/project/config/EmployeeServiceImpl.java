@@ -5,6 +5,8 @@ package com.project.config;
 //import com.project.repo.TicklersRepo;
 import com.project.repo.Customer;
 import com.project.repo.CustomerRepo;
+import com.project.repo.Log;
+import com.project.repo.LogRepo;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -19,27 +21,32 @@ public class EmployeeServiceImpl {
 
 
 
-    //private LogRepo repo;
+
     //private TicklersRepo ticklersRepo;
     private CustomerRepo customerRepo;
+    private LogRepo LogRepo;
 
-   /* public EmployeeServiceImpl(LogRepo repo, TicklersRepo ticklersRepo) {
-        this.repo = repo;
-        this.ticklersRepo = ticklersRepo;
-    }*/
 
-    public EmployeeServiceImpl(CustomerRepo customerRepo) {
+    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo LogRepo) {
         this.customerRepo=customerRepo;
+        this.LogRepo = LogRepo;
     }
 
-    public boolean insertCustomer(int identityValue, String action, String name) {
+    public boolean insertCustomer(int identityValue, String action, String name ) {
         Customer customer = new Customer();
+        Log log =new Log();
         customer.setidentityValue(identityValue);
         customer.setAction(action);
         customer.setName(name);
+        log.setMainInput(12);
+        log.setIdentityValue(123);
+        log.setServiceName("Setlog");
+
+
 
         try {
             customerRepo.save(customer);
+            LogRepo.save(log);
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();

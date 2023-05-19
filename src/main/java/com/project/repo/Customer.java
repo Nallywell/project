@@ -1,9 +1,5 @@
 package com.project.repo;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 
 @SuppressWarnings("JpaObjectClassSignatureInspection")
@@ -14,7 +10,12 @@ public class Customer {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "IDENTITYVALUE")
+
+
     private int identityValue;
+
+
     private String action;
     private String name;
 

@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://project.com/classes" xmlns:tns="http://project.com/classes" elementFormDefault="qualified">
 
-    <element name="InsertLogRequest"
-             type="tns:InsertLogRequest">
-    </element>
-    <complexType name="InsertLogRequest">
-        <sequence>
-
-            <element name="identityvalue" type="int"></element>
-
-            <element name="name" type="string"></element>
-
-        </sequence>
-    </complexType>
-
-    <element name="InsertLogResponse"
-             type="tns:InsertLogResponse">
-    </element>
-
-    <complexType name="InsertLogResponse">
-        <sequence>
-            <element name="status" type="boolean"></element>
-        </sequence>
-    </complexType>
-
-    <element name="InsertMemoRequest" type="tns:InsertMemoRequest"></element>
-
-    <complexType name="InsertMemoRequest">
-        <sequence>
-            <element name="ticklerNumber" type="int"></element>
-            <element name="ccId" type="int"></element>
-            <element name="coId" type="int"></element>
-            <element name="shortDescription" type="string"></element>
-            <element name="longDescription" type="string"></element>
-        </sequence>
-    </complexType>
-
-
-    <element name="InsertMemoResponse" type="tns:InsertMemoResponse"></element>
-
-    <complexType name="InsertMemoResponse">
-        <sequence>
-            <element name="status" type="boolean"></element>
-        </sequence>
-    </complexType>
 
     <element name="InsertCustomerRequest"
              type="tns:InsertCustomerRequest">
@@ -53,11 +10,11 @@
         <sequence>
             <element name="identityvalue" type="int"></element>
             <element name="action" type="string"></element>
-            <element name="Name" type="string"></element>
+            <element name="name" type="string"></element>
         </sequence>
     </complexType>
 
-    <element name="InsertCustomerRespone"
+    <element name="InsertCustomerResponse"
              type="tns:InsertCustomerResponse">
     </element>
 
@@ -66,5 +23,4 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
-
 </schema>

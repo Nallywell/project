@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.05.19 à 02:48:56 PM CEST 
+// Généré le : 2023.05.19 à 05:05:20 PM CEST 
 //
 
 
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="action" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +46,7 @@ public class InsertCustomerRequest {
     protected int identityvalue;
     @XmlElement(required = true)
     protected String action;
-    @XmlElement(name = "Name", required = true)
+    @XmlElement(required = true)
     protected String name;
 
     /**
