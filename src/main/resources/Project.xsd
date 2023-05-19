@@ -9,8 +9,9 @@
     <complexType name="InsertCustomerRequest">
         <sequence>
             <element name="identityvalue" type="int"></element>
-            <element name="action" type="string"></element>
-            <element name="name" type="string"></element>
+            <element name="firstName" type="string"></element>
+            <element name="lastName" type="string"></element>
+            <element name="birthDate" type="string"></element>
         </sequence>
     </complexType>
 
@@ -19,6 +20,25 @@
     </element>
 
     <complexType name="InsertCustomerResponse">
+        <sequence>
+            <element name="status" type="boolean"></element>
+        </sequence>
+    </complexType>
+    <element name="InsertContractRequest"
+             type="tns:InsertContractRequest">
+    </element>
+
+    <complexType name="InsertContractRequest">
+        <sequence>
+            <element name="ICCID" type="int"></element>
+        </sequence>
+    </complexType>
+
+    <element name="InsertContractResponse"
+             type="tns:InsertContractResponse">
+    </element>
+
+    <complexType name="InsertContractResponse">
         <sequence>
             <element name="status" type="boolean"></element>
         </sequence>

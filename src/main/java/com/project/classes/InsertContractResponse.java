@@ -14,12 +14,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerResponse complex type.
+ * <p>Classe Java pour InsertContractResponse complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerResponse">
+ * &lt;complexType name="InsertContractResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerResponse", propOrder = {
+@XmlType(name = "InsertContractResponse", propOrder = {
     "status"
 })
-public class InsertCustomerResponse {
+public class InsertContractResponse {
 
     protected boolean status;
 

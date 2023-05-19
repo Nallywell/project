@@ -29,7 +29,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertCustomerResponse> insertCustomerResponse(@RequestPayload InsertCustomerRequest request) {
         InsertCustomerResponse response = new InsertCustomerResponse();
-        employeeService.insertCustomer(request.getIdentityvalue(), request.getAction(), request.getName());
+        employeeService.insertCustomer(request.getIdentityvalue(), request.getFirstName(), request.getLastName(), request.getBirthDate());
         response.setStatus(true);
         return new ObjectFactory().createInsertCustomerResponse(response);
     }

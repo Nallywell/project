@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,10 +16,6 @@ import java.util.stream.Collectors;
 @ComponentScan
 
 public class EmployeeServiceImpl {
-
-
-
-
 
     private CustomerRepo customerRepo;
     private LogRepo LogRepo;
@@ -31,15 +28,16 @@ public class EmployeeServiceImpl {
         this.memoRepo=memoRepo;
     }
 
-    public boolean insertCustomer(int identityValue, String action, String name ) {
+    public boolean insertCustomer(int identityValue, String FirstName, String LastName, String birthDate ) {
         Customer customer = new Customer();
         Log log =new Log();
         Memo memo1 = new Memo();
         Memo memo2 = new Memo();
         Memo memo3 = new Memo();
-        customer.setidentityValue(identityValue);
-        customer.setAction(action);
-        customer.setName(name);
+        customer.setIdentityValue(identityValue);
+        customer.setFirstName(FirstName);
+        customer.setLastName(LastName);
+        customer.setBirthDate(birthDate);
         log.setMainInput(12);
         log.setIdentityValue(123);
         log.setServiceName("Setlog");
@@ -59,10 +57,6 @@ public class EmployeeServiceImpl {
         memo3.setLongDescription("world");
         memo3.setShortDescription("add new");
 
-
-
-
-
         try {
             customerRepo.save(customer);
             LogRepo.save(log);
@@ -76,6 +70,15 @@ public class EmployeeServiceImpl {
             return false; // Return false if there was an error during the insertion
         }
     }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,63 +1,68 @@
 package com.project.repo;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 @SuppressWarnings("JpaObjectClassSignatureInspection")
 @Entity
-@Table(name ="Customer")
+@Table(name = "Customer")
 public class Customer {
 
-
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "IDENTITYVALUE")
-
-
     private int identityValue;
 
+    @Column(name = "FIRST_NAME")
+    private String firstName;
 
-    private String action;
-    private String name;
+    @Column(name = "LAST_NAME")
+    private String lastName;
 
+    @Column(name = "BIRTH_DATE")
+    private String birthDate;
 
-    //  private String xml;
     public Customer() {
     }
 
-    public int getidentityValue() {
+    public int getIdentityValue() {
         return identityValue;
     }
 
-    public void setidentityValue(int serviceName) {
-        this.identityValue = serviceName;
+    public void setIdentityValue(int identityValue) {
+        this.identityValue = identityValue;
     }
 
-    public String getAction() {
-        return action;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "serviceName=" + identityValue +
-                ", action='" + action + '\'' +
-                ", name=" + name +
+                "identityValue=" + identityValue +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 '}';
     }
 }
-
-
-
-
