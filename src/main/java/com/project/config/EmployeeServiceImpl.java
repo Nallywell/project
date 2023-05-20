@@ -50,17 +50,22 @@ public class EmployeeServiceImpl {
 
 
 
-    boolean insertCustomer(int identityValue, String FirstName, String LastName, String birthDate ) {
+    boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
         Customer customer = new Customer();
-        Log log =new Log();
+        Log log = new Log();
         Memo memo1 = new Memo();
         Memo memo2 = new Memo();
         Memo memo3 = new Memo();
         customer.setIdentityValue(identityValue);
-        customer.setFirstName(FirstName);
-        customer.setLastName(LastName);
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
         customer.setBirthDate(birthDate);
-        log.setMainInput(12);
+
+        // Save the customer to generate the customerId
+        customer = customerRepo.saveAndFlush(customer);
+        int customerId = customer.getCustomerId();
+
+        log.setMainInput(customerId);
         log.setIdentityValue(123);
         log.setServiceName("SetCustomer");
         memo1.setMemoNumber(1);
@@ -80,23 +85,21 @@ public class EmployeeServiceImpl {
         memo3.setShortDescription("cc address");
 
         try {
-            Customer savedCustomer = customerRepo.saveAndFlush(customer);
-            int customerId = savedCustomer.getCustomerId();
-            System.out.println("Customer ID: " + customerId);
-            //customerRepo.save(customer);
-            LogRepo.save(log);
+            LogRepo.save(log); // Save the log entry with customerId as mainInput
             memoRepo.save(memo1);
             memoRepo.save(memo2);
             memoRepo.save(memo3);
 
+            System.out.println("Customer ID: " + customerId);
 
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
-
     }
+
+
    /* public boolean insertContract(int ICCID) {
         Contract contract = new Contract();
         Log log =new Log();
