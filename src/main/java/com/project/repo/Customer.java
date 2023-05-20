@@ -18,6 +18,8 @@ public class Customer {
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Column(name = "CUSTOMERID")
+    private int customerId;
     @Column(name = "BIRTH_DATE")
     private String birthDate;
 
@@ -47,6 +49,13 @@ public class Customer {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
     public String getBirthDate() {
         return birthDate;
@@ -62,6 +71,7 @@ public class Customer {
                 "identityValue=" + identityValue +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", customerId='" + customerId + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 '}';
     }

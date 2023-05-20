@@ -6,6 +6,9 @@ package com.project.config;
 import com.project.repo.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -20,15 +23,34 @@ public class EmployeeServiceImpl {
     private CustomerRepo customerRepo;
     private LogRepo LogRepo;
     private MemoRepo memoRepo;
+    private ContractRepo contractRepo;
 
 
-    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo LogRepo, MemoRepo memoRepo) {
+
+    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo LogRepo, MemoRepo memoRepo, ContractRepo contractRepo) {
         this.customerRepo=customerRepo;
         this.LogRepo = LogRepo;
         this.memoRepo=memoRepo;
+        this.contractRepo = contractRepo;
     }
 
-    public boolean insertCustomer(int identityValue, String FirstName, String LastName, String birthDate ) {
+
+
+  /*  public Integer getCustomerId(int customerId) {
+        return customerRepo.findCustomerId(customerId);
+    }
+
+    /*public int customerId = employeeServiceImpl.getCustomerId(12345);
+ if (customerId != null) {
+        System.out.println("Customer ID: " + customerId);
+    } else {
+        System.out.println("Customer not found");
+    }*/
+
+
+
+
+    boolean insertCustomer(int identityValue, String FirstName, String LastName, String birthDate ) {
         Customer customer = new Customer();
         Log log =new Log();
         Memo memo1 = new Memo();
@@ -40,7 +62,7 @@ public class EmployeeServiceImpl {
         customer.setBirthDate(birthDate);
         log.setMainInput(12);
         log.setIdentityValue(123);
-        log.setServiceName("Setlog");
+        log.setServiceName("SetCustomer");
         memo1.setMemoNumber(1);
         memo1.setCcId(12);
         memo1.setCoId(90);
@@ -50,70 +72,61 @@ public class EmployeeServiceImpl {
         memo2.setCcId(987);
         memo2.setCoId(9098);
         memo2.setLongDescription("helloWold");
-        memo2.setShortDescription("conew");
+        memo2.setShortDescription("cc");
         memo3.setMemoNumber(3);
         memo3.setCcId(1567);
         memo3.setCoId(9098978);
         memo3.setLongDescription("world");
-        memo3.setShortDescription("add new");
+        memo3.setShortDescription("cc address");
 
         try {
-            customerRepo.save(customer);
+            Customer savedCustomer = customerRepo.saveAndFlush(customer);
+            int customerId = savedCustomer.getCustomerId();
+            System.out.println("Customer ID: " + customerId);
+            //customerRepo.save(customer);
             LogRepo.save(log);
             memoRepo.save(memo1);
             memoRepo.save(memo2);
             memoRepo.save(memo3);
+
 
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-   /* public boolean insertEmployee(int identityvalue , String service) {
-        Log log = new Log();
-        //log.setMainInput(id);
-        log.setIdentityValue(identityvalue);
-        log.setServiceName(service);
-
-
-
+   /* public boolean insertContract(int ICCID) {
+        Contract contract = new Contract();
+        Log log =new Log();
+        Memo memo1 = new Memo();
+        contract.setICCID(ICCID);
         try {
-            repo.save(log);
-            return true;  // Return true if the insertion was successful
+            contractRepo.save(contract);
+
+            return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
-            return false;  // Return false if there was an error during the insertion
-        }
-    }
-    public boolean insertMemo(int ticklerNumber, int ccId, int coId, String shortDescription, String longDescription) {
-        Ticklers memo = new Ticklers();
-
-        memo.setTicklerNumber(ticklerNumber);
-        memo.setCcId(ccId);
-        memo.setCoId(coId);
-        memo.setShortDescription(shortDescription);
-        memo.setLongDescription(longDescription);
-
-        try {
-            ticklersRepo.save(memo);
-            return true ;  // Return true if the insertion was successful
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;  // Return false if there was an error during the insertion
+            return false; // Return false if there was an error during the insertion
         }
     }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
