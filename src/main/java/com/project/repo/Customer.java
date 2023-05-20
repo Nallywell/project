@@ -8,6 +8,9 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CUSTOMERID")
+    private int customerId;
 
     @Column(name = "IDENTITYVALUE")
     private int identityValue;
@@ -18,8 +21,7 @@ public class Customer {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "CUSTOMERID")
-    private int customerId;
+
     @Column(name = "BIRTH_DATE")
     private String birthDate;
 
