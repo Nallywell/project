@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface CustomerRepo extends JpaRepository<Customer,Integer> {
 
 
-
-
+    Integer findCustomerId(int identityValue);
 }
 

@@ -60,29 +60,38 @@ public class EmployeeServiceImpl {
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
         customer.setBirthDate(birthDate);
+        customer.setAction("CREATE");
+        customer.setcustType("C");
+        customer.setidentityTypeCode(2);
+
 
         // Save the customer to generate the customerId
         customer = customerRepo.saveAndFlush(customer);
         int customerId = customer.getCustomerId();
 
+
         log.setMainInput(customerId);
         log.setIdentityValue(123);
         log.setServiceName("SetCustomer");
+
         memo1.setMemoNumber(1);
-        memo1.setCcId(12);
-        memo1.setCoId(90);
+        memo1.setCcId(customerId);
+        memo1.setCoId(3456);
         memo1.setLongDescription("hello");
         memo1.setShortDescription("cc new");
+
         memo2.setMemoNumber(2);
-        memo2.setCcId(987);
+        memo2.setCcId(customerId);
         memo2.setCoId(9098);
         memo2.setLongDescription("helloWold");
-        memo2.setShortDescription("cc");
+        memo2.setShortDescription("cc address");
+
         memo3.setMemoNumber(3);
-        memo3.setCcId(1567);
+        memo3.setCcId(customerId);
         memo3.setCoId(9098978);
         memo3.setLongDescription("world");
-        memo3.setShortDescription("cc address");
+        memo3.setShortDescription("cc update");
+
 
         try {
             LogRepo.save(log); // Save the log entry with customerId as mainInput
@@ -99,37 +108,61 @@ public class EmployeeServiceImpl {
         }
     }
 
-
-   /* public boolean insertContract(int ICCID) {
+    public boolean insertContract(int ICCID) {
         Contract contract = new Contract();
-        Log log =new Log();
+
+        Log log = new Log();
         Memo memo1 = new Memo();
+        Memo memo2 = new Memo();
+        Memo memo3 = new Memo();
         contract.setICCID(ICCID);
+        contract.setAction("CREATE");
+        contract.setOfferPromotype("D_IBIZA1500");
+
+
+        contract = contractRepo.saveAndFlush(contract);
+        int contractId = contract.getContractId();
+
+        log.setMainInput(contractId);
+        log.setIdentityValue(000);
+        log.setServiceName("SetContract");
+
+        memo1.setMemoNumber(1);
+        memo1.setCcId(444);
+        memo1.setCoId(contractId);
+        memo1.setLongDescription("hello");
+        memo1.setShortDescription("cc new");
+
+        memo2.setMemoNumber(2);
+        memo2.setCcId(456);
+        memo2.setCoId(contractId);
+        memo2.setLongDescription("helloWold");
+        memo2.setShortDescription("cc address");
+
+        memo3.setMemoNumber(3);
+        memo3.setCcId(567);
+        memo3.setCoId(contractId);
+        memo3.setLongDescription("world");
+        memo3.setShortDescription("cc update");
+
         try {
-            contractRepo.save(contract);
+            LogRepo.save(log); // Save the log entry with customerId as mainInput
+            memoRepo.save(memo1);
+            memoRepo.save(memo2);
+            memoRepo.save(memo3);
+
+            System.out.println("Contract ID: " + contractId);
 
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
-    }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }
+
+
+
+
+

@@ -25,8 +25,15 @@ public class Customer {
     @Column(name = "BIRTH_DATE")
     private String birthDate;
 
+    @Column(name = "ACTION")
+    private String action;
+    @Column(name = "CUST_TYPE")
+    private String custType;
+    @Column(name = "IDENTITY_TYPE_CODE")
+    private int identityTypeCode;
     public Customer() {
     }
+
 
     public int getIdentityValue() {
         return identityValue;
@@ -65,6 +72,27 @@ public class Customer {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+    public String getcustType() {
+        return custType;
+    }
+
+    public void setcustType(String custType) {
+        this.custType = custType;
+    }
+    public int identityTypeCode() {
+        return identityTypeCode;
+    }
+
+    public void setidentityTypeCode(int identityTypeCode) {
+        this.identityTypeCode = identityTypeCode;
     }
 
     @Override
