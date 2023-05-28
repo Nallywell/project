@@ -3,12 +3,18 @@ package com.project.config;
 //import com.project.repo.LogRepo;
 //import com.project.repo.Ticklers;
 //import com.project.repo.TicklersRepo;
+import com.project.classes.InsertCustomerRequest;
 import com.project.repo.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
+
 
 import java.util.Arrays;
 import java.util.Date;
@@ -54,6 +60,9 @@ public class EmployeeServiceImpl {
 
 
 
+
+// ...
+
     boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
         Customer customer = new Customer();
         Log log = new Log();
@@ -68,15 +77,13 @@ public class EmployeeServiceImpl {
         customer.setcustType("C");
         customer.setidentityTypeCode(2);
 
-
         // Save the customer to generate the customerId
         customer = customerRepo.saveAndFlush(customer);
         int customerId = customer.getCustomerId();
 
         log.setMainInput(customerId);
-
         log.setServiceName("SetCustomer");
-        log.setXml(null);
+        log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
 
         memo1.setMemoNumber(1);
         memo1.setCcId(customerId);
@@ -99,7 +106,6 @@ public class EmployeeServiceImpl {
         memo3.setShortDescription("cc_update");
         memo3.setScreateBy("DIGIT");
 
-
         try {
             LogRepo.save(log); // Save the log entry with customerId as mainInput
             memoRepo.save(memo1);
@@ -108,13 +114,47 @@ public class EmployeeServiceImpl {
 
             System.out.println("Customer ID: " + customerId);
 
-
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
     }
+
+    // Generate XML request using JAXB
+    private String generateXmlRequest(int identityValue, String firstName, String lastName, String birthDate) {
+        try {
+            // Create the JAXBContext for the desired class
+            JAXBContext context = JAXBContext.newInstance(InsertCustomerRequestWrapper.class);
+
+            // Create the marshaller
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Create an instance of your request wrapper class
+            InsertCustomerRequestWrapper wrapper = new InsertCustomerRequestWrapper();
+
+            // Create an instance of the original request class and set the values
+            InsertCustomerRequest request = new InsertCustomerRequest();
+            request.setIdentityvalue(identityValue);
+            request.setFirstName(firstName);
+            request.setLastName(lastName);
+            request.setBirthDate(birthDate);
+
+            // Set the request object in the wrapper
+            wrapper.setRequest(request);
+
+            // Marshal the wrapper to a string
+            StringWriter writer = new StringWriter();
+            marshaller.marshal(wrapper, writer);
+            return writer.toString();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return null; // Error occurred during XML generation
+        }
+    }
+
+
 
   /*  public boolean insertContract(int ICCID, int identityValue) {
         Contract contract = new Contract();
