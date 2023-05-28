@@ -46,22 +46,9 @@ public class EmployeeServiceImpl {
 
 
 
-  /*  public Integer getCustomerId(int customerId) {
-        return customerRepo.findCustomerId(customerId);
-    }
-
-    /*public int customerId = employeeServiceImpl.getCustomerId(12345);
- if (customerId != null) {
-        System.out.println("Customer ID: " + customerId);
-    } else {
-        System.out.println("Customer not found");
-    }*/
 
 
 
-
-
-// ...
 
     boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
         Customer customer = new Customer();

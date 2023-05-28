@@ -46,4 +46,20 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
+    <element name="NotifyLogRequest" type="tns:NotifyLogRequest"></element>
+
+    <complexType name="NotifyLogRequest">
+        <sequence>
+            <element name="id" type="int"></element>
+            <element name="serviceName" type="string"></element>
+        </sequence>
+    </complexType>
+
+    <element name="NotifyLogResponse" type="tns:NotifyLogResponse"></element>
+
+    <complexType name="NotifyLogResponse">
+        <sequence>
+            <element name="xml" type="string"></element>
+        </sequence>
+    </complexType>
 </schema>

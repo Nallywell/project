@@ -15,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertContractRequest complex type.
+ * <p>Classe Java pour NotifyLogRequest complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertContractRequest">
+ * &lt;complexType name="NotifyLogRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="serviceName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,46 +35,54 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertContractRequest", propOrder = {
-    "identityvalue",
-    "iccid"
+@XmlType(name = "NotifyLogRequest", propOrder = {
+    "id",
+    "serviceName"
 })
-public class InsertContractRequest {
+public class NotifyLogRequest {
 
-    protected int identityvalue;
-    @XmlElement(name = "ICCID")
-    protected int iccid;
+    protected int id;
+    @XmlElement(required = true)
+    protected String serviceName;
 
     /**
-     * Obtient la valeur de la propriété identityvalue.
+     * Obtient la valeur de la propriété id.
      * 
      */
-    public int getIdentityvalue() {
-        return identityvalue;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Définit la valeur de la propriété identityvalue.
+     * Définit la valeur de la propriété id.
      * 
      */
-    public void setIdentityvalue(int value) {
-        this.identityvalue = value;
+    public void setId(int value) {
+        this.id = value;
     }
 
     /**
-     * Obtient la valeur de la propriété iccid.
+     * Obtient la valeur de la propriété serviceName.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getICCID() {
-        return iccid;
+    public String getServiceName() {
+        return serviceName;
     }
 
     /**
-     * Définit la valeur de la propriété iccid.
+     * Définit la valeur de la propriété serviceName.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setICCID(int value) {
-        this.iccid = value;
+    public void setServiceName(String value) {
+        this.serviceName = value;
     }
 
 }

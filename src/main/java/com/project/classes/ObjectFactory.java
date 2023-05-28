@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.05.22 à 06:58:04 PM CEST 
+// Généré le : 2023.05.28 à 04:33:38 PM CEST 
 //
 
 
@@ -33,6 +33,8 @@ public class ObjectFactory {
 
     private final static QName _InsertCustomerRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerRequest");
     private final static QName _InsertContractRequest_QNAME = new QName("http://project.com/classes", "InsertContractRequest");
+    private final static QName _NotifyLogRequest_QNAME = new QName("http://project.com/classes", "NotifyLogRequest");
+    private final static QName _NotifyLogResponse_QNAME = new QName("http://project.com/classes", "NotifyLogResponse");
     private final static QName _InsertContractResponse_QNAME = new QName("http://project.com/classes", "InsertContractResponse");
     private final static QName _InsertCustomerResponse_QNAME = new QName("http://project.com/classes", "InsertCustomerResponse");
 
@@ -57,6 +59,22 @@ public class ObjectFactory {
      */
     public InsertContractRequest createInsertContractRequest() {
         return new InsertContractRequest();
+    }
+
+    /**
+     * Create an instance of {@link NotifyLogRequest }
+     * 
+     */
+    public NotifyLogRequest createNotifyLogRequest() {
+        return new NotifyLogRequest();
+    }
+
+    /**
+     * Create an instance of {@link NotifyLogResponse }
+     * 
+     */
+    public NotifyLogResponse createNotifyLogResponse() {
+        return new NotifyLogResponse();
     }
 
     /**
@@ -91,6 +109,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertContractRequest")
     public JAXBElement<InsertContractRequest> createInsertContractRequest(InsertContractRequest value) {
         return new JAXBElement<InsertContractRequest>(_InsertContractRequest_QNAME, InsertContractRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyLogRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyLogRequest")
+    public JAXBElement<NotifyLogRequest> createNotifyLogRequest(NotifyLogRequest value) {
+        return new JAXBElement<NotifyLogRequest>(_NotifyLogRequest_QNAME, NotifyLogRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyLogResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyLogResponse")
+    public JAXBElement<NotifyLogResponse> createNotifyLogResponse(NotifyLogResponse value) {
+        return new JAXBElement<NotifyLogResponse>(_NotifyLogResponse_QNAME, NotifyLogResponse.class, null, value);
     }
 
     /**

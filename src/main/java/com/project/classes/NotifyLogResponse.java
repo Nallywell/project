@@ -10,20 +10,21 @@ package com.project.classes;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerResponse complex type.
+ * <p>Classe Java pour NotifyLogResponse complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerResponse">
+ * &lt;complexType name="NotifyLogResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="xml" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,27 +34,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerResponse", propOrder = {
-    "status"
+@XmlType(name = "NotifyLogResponse", propOrder = {
+    "xml"
 })
-public class InsertCustomerResponse {
+public class NotifyLogResponse {
 
-    protected boolean status;
+    @XmlElement(required = true)
+    protected String xml;
 
     /**
-     * Obtient la valeur de la propriété status.
+     * Obtient la valeur de la propriété xml.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isStatus() {
-        return status;
+    public String getXml() {
+        return xml;
     }
 
     /**
-     * Définit la valeur de la propriété status.
+     * Définit la valeur de la propriété xml.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setStatus(boolean value) {
-        this.status = value;
+    public void setXml(String value) {
+        this.xml = value;
     }
 
 }
