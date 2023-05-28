@@ -26,8 +26,8 @@ public class Memo {
         @Column(name = "LONG_DESCRIPTION", length = 100)
         private String longDescription;
 
-    @Column(name = "CREATDBY")
-    private Timestamp createBy;
+     @Column(name = "CREATDBY")
+    private String createBy;
         public Memo() {
         }
 
@@ -70,13 +70,14 @@ public class Memo {
         public void setLongDescription(String longDescription) {
             this.longDescription = longDescription;
         }
-    public Timestamp getCreateBy() {
+    public String getcreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(Timestamp createBy) {
+    public void setScreateBy(String createBy) {
         this.createBy = createBy;
     }
+
 
         @Override
         public String toString() {
@@ -86,7 +87,7 @@ public class Memo {
                     ", coId=" + coId +
                     ", shortDescription='" + shortDescription + '\'' +
                     ", longDescription='" + longDescription + '\'' +
-                    ", createBy=" + createBy +
+                   ", createBy=" + createBy +
                     '}';
         }
     }

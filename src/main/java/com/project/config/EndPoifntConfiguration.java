@@ -34,14 +34,14 @@ public class EndPoifntConfiguration {
         return new ObjectFactory().createInsertCustomerResponse(response);
     }
 
-    @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertContractRequest")
+  /*  @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertContractRequest")
     @ResponsePayload
     public JAXBElement<InsertContractResponse> insertContractResponse(@RequestPayload InsertContractRequest request) {
         InsertContractResponse response = new InsertContractResponse();
-        employeeService.insertContract(request.getICCID());
+        employeeService.insertContract(request.getICCID(), request.getIdentityvalue());
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
-    }
+    }*/
 
 
 

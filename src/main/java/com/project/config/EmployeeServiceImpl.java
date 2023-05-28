@@ -15,6 +15,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
 @Component
 @ComponentScan
 
@@ -69,28 +73,31 @@ public class EmployeeServiceImpl {
         customer = customerRepo.saveAndFlush(customer);
         int customerId = customer.getCustomerId();
 
-
         log.setMainInput(customerId);
-        log.setIdentityValue(123);
+
         log.setServiceName("SetCustomer");
+        log.setXml(null);
 
         memo1.setMemoNumber(1);
         memo1.setCcId(customerId);
-        memo1.setCoId(3456);
+        memo1.setCoId(null);
         memo1.setLongDescription("hello");
         memo1.setShortDescription("cc new");
+        memo1.setScreateBy("DIGIT");
 
         memo2.setMemoNumber(2);
         memo2.setCcId(customerId);
-        memo2.setCoId(9098);
+        memo2.setCoId(null);
         memo2.setLongDescription("helloWold");
         memo2.setShortDescription("cc address");
+        memo2.setScreateBy("DIGIT");
 
         memo3.setMemoNumber(3);
         memo3.setCcId(customerId);
-        memo3.setCoId(9098978);
+        memo3.setCoId(null);
         memo3.setLongDescription("world");
-        memo3.setShortDescription("cc update");
+        memo3.setShortDescription("cc_update");
+        memo3.setScreateBy("DIGIT");
 
 
         try {
@@ -101,6 +108,7 @@ public class EmployeeServiceImpl {
 
             System.out.println("Customer ID: " + customerId);
 
+
             return true; // Return true if the insertion was successful
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,7 +116,7 @@ public class EmployeeServiceImpl {
         }
     }
 
-    public boolean insertContract(int ICCID) {
+  /*  public boolean insertContract(int ICCID, int identityValue) {
         Contract contract = new Contract();
 
         Log log = new Log();
@@ -116,49 +124,55 @@ public class EmployeeServiceImpl {
         Memo memo2 = new Memo();
         Memo memo3 = new Memo();
         contract.setICCID(ICCID);
+        contract.setidentityValue(identityValue);
         contract.setAction("CREATE");
         contract.setOfferPromotype("D_IBIZA1500");
-
 
         contract = contractRepo.saveAndFlush(contract);
         int contractId = contract.getContractId();
 
         log.setMainInput(contractId);
-        log.setIdentityValue(000);
+
         log.setServiceName("SetContract");
 
+        // Retrieve customerId based on matching identityValue
+        Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+
+        if (customerId != null) {
+            memo1.setCcId(customerId); // Set the customerId as the ccId for memo1
+            memo2.setCcId(customerId); // Set the customerId as the ccId for memo2
+            memo3.setCcId(customerId); // Set the customerId as the ccId for memo3
+        }
+
         memo1.setMemoNumber(1);
-        memo1.setCcId(444);
         memo1.setCoId(contractId);
         memo1.setLongDescription("hello");
         memo1.setShortDescription("cc new");
 
         memo2.setMemoNumber(2);
-        memo2.setCcId(456);
         memo2.setCoId(contractId);
         memo2.setLongDescription("helloWold");
         memo2.setShortDescription("cc address");
 
         memo3.setMemoNumber(3);
-        memo3.setCcId(567);
         memo3.setCoId(contractId);
         memo3.setLongDescription("world");
         memo3.setShortDescription("cc update");
 
         try {
-            LogRepo.save(log); // Save the log entry with customerId as mainInput
+            LogRepo.save(log);
             memoRepo.save(memo1);
             memoRepo.save(memo2);
             memoRepo.save(memo3);
 
             System.out.println("Contract ID: " + contractId);
 
-            return true; // Return true if the insertion was successful
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Return false if there was an error during the insertion
+            return false;
         }
-    }
+    }*/
 
 }
 

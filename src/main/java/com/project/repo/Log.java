@@ -11,10 +11,13 @@ public class Log {
     @Id
     @Column(name = "MAININPUT")
 private int mainInput ;
-    @Column(name = "IDENTITYVALUE")
-private int identityValue;
+
     @Column(name = "SERVICENAME")
     private String serviceName;
+
+    @Column(name = "XML")
+    @Lob
+    private String xml;
     public Log() {
     }
 
@@ -26,13 +29,7 @@ private int identityValue;
         this.mainInput = mainInput;
     }
 
-    public int getIdentityValue() {
-        return identityValue;
-    }
 
-    public void setIdentityValue(int identityValue) {
-        this.identityValue = identityValue;
-    }
 
     public String getServiceName() {
         return serviceName;
@@ -41,13 +38,21 @@ private int identityValue;
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
+      public String getXML() {
+        return xml;
+    }
+
+    public void setXml( String xml) {
+        this.xml = xml;
+    }
 
     @Override
     public String toString() {
         return "Log{" +
                 "mainInput=" + mainInput +
-                ", identityValue=" + identityValue +
+
                 ", serviceName='" + serviceName + '\'' +
+                "xml=" + xml +
                 '}';
     }
 }

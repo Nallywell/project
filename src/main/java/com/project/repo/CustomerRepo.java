@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer,Integer> {
 
-
-    Integer findCustomerId(int identityValue);
+    @Query("SELECT c.customerId FROM Customer c WHERE c.identityValue = ?1")
+    Integer findCustomerIdByIdentityValue(int identityValue);
 }
 

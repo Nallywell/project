@@ -30,6 +30,8 @@
 
     <complexType name="InsertContractRequest">
         <sequence>
+
+            <element name="identityvalue" type="int"></element>
             <element name="ICCID" type="int"></element>
 
         </sequence>
