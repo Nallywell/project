@@ -41,23 +41,14 @@ public class EndPoifntConfiguration {
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
     }
-
-
-
- /*   @PayloadRoot(namespace = "http://soap.com/hrms", localPart = "InsertEmployeeRequest")
+    @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyLogRequest")
     @ResponsePayload
-    public JAXBElement<InsertEmployeeResponse> insertEmployeeResponse(@RequestPayload InsertEmployeeRequest request) {
-        InsertEmployeeResponse response = new InsertEmployeeResponse();
-        employeeService.insertEmployee( request.getIdentityvalue() , request.getServiceName());
+    public JAXBElement<NotifyLogResponse> NotifyLogResponse(@RequestPayload NotifyLogRequest request) {
+        NotifyLogResponse response = new NotifyLogResponse();
+        employeeService.notifyLog(request.getId(), request.getServiceName());
         response.setStatus(true);
-        return new ObjectFactory().createInsertEmployeeResponse(response);
+        return new ObjectFactory().createNotifyLogResponse(response);
+
 
     }
-    @PayloadRoot(namespace = "http://soap.com/hrms", localPart = "InsertMemoRequest")
-    @ResponsePayload
-    public JAXBElement<InsertMemoResponse> insertMemoResponse(@RequestPayload InsertMemoRequest request) {
-        InsertMemoResponse response = new InsertMemoResponse();
-        employeeService.insertMemo(request.getTicklerNumber(), request.getCcId(), request.getCoId(), request.getShortDescription(), request.getLongDescription());
-        response.setStatus(true);
-        return new ObjectFactory().createInsertMemoResponse(response);
-    }*/}
+ }

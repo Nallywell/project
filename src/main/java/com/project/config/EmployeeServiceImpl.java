@@ -23,13 +23,15 @@ public class EmployeeServiceImpl {
     private LogRepo logRepo;
     private MemoRepo memoRepo;
     private ContractRepo contractRepo;
+    private LogTrigger logTrigger;
 
     @Autowired
-    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo logRepo, MemoRepo memoRepo, ContractRepo contractRepo) {
+    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo logRepo, MemoRepo memoRepo, ContractRepo contractRepo,  LogTrigger logTrigger) {
         this.customerRepo = customerRepo;
         this.logRepo = logRepo;
         this.memoRepo = memoRepo;
         this.contractRepo = contractRepo;
+        this.logTrigger =logTrigger;
     }
     boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
         Customer customer = new Customer();
@@ -51,6 +53,7 @@ public class EmployeeServiceImpl {
 
         log.setMainInput(customerId);
         log.setServiceName("SetCustomer");
+        log.setStatus("OK");
         log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
         memo1.setMemoNumber(1);
         memo2.setMemoNumber(2);
@@ -144,6 +147,7 @@ public class EmployeeServiceImpl {
 
         log.setMainInput(contractId);
         log.setServiceName("SetContract");
+        log.setStatus("OK");
 
         // Generate XML request for the contract
 
@@ -218,6 +222,21 @@ public class EmployeeServiceImpl {
             e.printStackTrace();
             return null; // Error occurred during XML generation
         }
+    }
+    boolean notifyLog(int id, String serviceName) {
+        Log log = new Log();
+        log.setMainInput(id);
+        log.setServiceName(serviceName);
+        log.setStatus("success");
+        try {
+            logRepo.save(log);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }
 

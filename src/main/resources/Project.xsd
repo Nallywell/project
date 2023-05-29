@@ -56,10 +56,10 @@
     </complexType>
 
     <element name="NotifyLogResponse" type="tns:NotifyLogResponse"></element>
-
     <complexType name="NotifyLogResponse">
         <sequence>
-            <element name="xml" type="string"></element>
+            <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
+
 </schema>

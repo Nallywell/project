@@ -18,6 +18,8 @@ private int mainInput ;
     @Column(name = "XML")
     @Lob
     private String xml;
+    @Column(name = "STATUS")
+    private String status;
     public Log() {
     }
 
@@ -38,7 +40,14 @@ private int mainInput ;
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
-      public String getXML() {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus( String status) {
+        this.status = status;
+    }
+      public String get() {
         return xml;
     }
 
@@ -52,7 +61,9 @@ private int mainInput ;
                 "mainInput=" + mainInput +
 
                 ", serviceName='" + serviceName + '\'' +
+                "status=" + status +
                 "xml=" + xml +
+
                 '}';
     }
 }
