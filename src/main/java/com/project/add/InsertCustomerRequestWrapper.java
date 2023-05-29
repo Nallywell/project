@@ -1,4 +1,4 @@
-package com.project.config;
+package com.project.add;
 
 import com.project.classes.InsertCustomerRequest;
 

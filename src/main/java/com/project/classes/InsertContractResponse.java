@@ -15,9 +15,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Classe Java pour InsertContractResponse complex type.
- * 
+ *
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="InsertContractResponse">
  *   &lt;complexContent>
@@ -29,12 +29,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InsertContractResponse", propOrder = {
-    "status"
+        "status"
 })
 public class InsertContractResponse {
 
@@ -42,7 +42,7 @@ public class InsertContractResponse {
 
     /**
      * Obtient la valeur de la propriété status.
-     * 
+     *
      */
     public boolean isStatus() {
         return status;
@@ -50,7 +50,7 @@ public class InsertContractResponse {
 
     /**
      * Définit la valeur de la propriété status.
-     * 
+     *
      */
     public void setStatus(boolean value) {
         this.status = value;

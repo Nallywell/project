@@ -1,55 +1,36 @@
 package com.project.config;
-//import com.project.repo.Log;
-//import com.project.repo.LogRepo;
-//import com.project.repo.Ticklers;
-//import com.project.repo.TicklersRepo;
+
+import com.project.add.InsertContractRequestWrapper;
+import com.project.add.InsertCustomerRequestWrapper;
+import com.project.classes.InsertContractRequest;
 import com.project.classes.InsertCustomerRequest;
 import com.project.repo.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
 
-
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
 @Component
 @ComponentScan
-
 public class EmployeeServiceImpl {
 
     private CustomerRepo customerRepo;
-    private LogRepo LogRepo;
+    private LogRepo logRepo;
     private MemoRepo memoRepo;
     private ContractRepo contractRepo;
 
-
-
-    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo LogRepo, MemoRepo memoRepo, ContractRepo contractRepo) {
-        this.customerRepo=customerRepo;
-        this.LogRepo = LogRepo;
-        this.memoRepo=memoRepo;
+    @Autowired
+    public EmployeeServiceImpl(CustomerRepo customerRepo, LogRepo logRepo, MemoRepo memoRepo, ContractRepo contractRepo) {
+        this.customerRepo = customerRepo;
+        this.logRepo = logRepo;
+        this.memoRepo = memoRepo;
         this.contractRepo = contractRepo;
     }
-
-
-
-
-
-
-
     boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
         Customer customer = new Customer();
         Log log = new Log();
@@ -71,6 +52,9 @@ public class EmployeeServiceImpl {
         log.setMainInput(customerId);
         log.setServiceName("SetCustomer");
         log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
+        memo1.setMemoNumber(1);
+        memo2.setMemoNumber(2);
+        memo3.setMemoNumber(3);
 
         memo1.setMemoNumber(1);
         memo1.setCcId(customerId);
@@ -94,10 +78,14 @@ public class EmployeeServiceImpl {
         memo3.setScreateBy("DIGIT");
 
         try {
-            LogRepo.save(log); // Save the log entry with customerId as mainInput
+            logRepo.save(log); // Save the log entry with customerId as mainInput
             memoRepo.save(memo1);
             memoRepo.save(memo2);
             memoRepo.save(memo3);
+
+
+
+
 
             System.out.println("Customer ID: " + customerId);
 
@@ -106,9 +94,7 @@ public class EmployeeServiceImpl {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
-    }
-
-    // Generate XML request using JAXB
+    }// Generate XML request using JAXB
     private String generateXmlRequest(int identityValue, String firstName, String lastName, String birthDate) {
         try {
             // Create the JAXBContext for the desired class
@@ -141,15 +127,13 @@ public class EmployeeServiceImpl {
         }
     }
 
-
-
-  /*  public boolean insertContract(int ICCID, int identityValue) {
+    public boolean insertContract(int ICCID, int identityValue) {
         Contract contract = new Contract();
 
         Log log = new Log();
-        Memo memo1 = new Memo();
-        Memo memo2 = new Memo();
-        Memo memo3 = new Memo();
+        Memo memo4 = new Memo();
+        Memo memo5 = new Memo();
+        Memo memo6 = new Memo();
         contract.setICCID(ICCID);
         contract.setidentityValue(identityValue);
         contract.setAction("CREATE");
@@ -159,38 +143,43 @@ public class EmployeeServiceImpl {
         int contractId = contract.getContractId();
 
         log.setMainInput(contractId);
-
         log.setServiceName("SetContract");
 
+        // Generate XML request for the contract
+
+        log.setXml(generateXmlRequestContract(ICCID, identityValue));
         // Retrieve customerId based on matching identityValue
         Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
 
         if (customerId != null) {
-            memo1.setCcId(customerId); // Set the customerId as the ccId for memo1
-            memo2.setCcId(customerId); // Set the customerId as the ccId for memo2
-            memo3.setCcId(customerId); // Set the customerId as the ccId for memo3
+            memo4.setCcId(customerId); // Set the customerId as the ccId for memo1
+            memo5.setCcId(customerId); // Set the customerId as the ccId for memo2
+            memo6.setCcId(customerId); // Set the customerId as the ccId for memo3
         }
 
-        memo1.setMemoNumber(1);
-        memo1.setCoId(contractId);
-        memo1.setLongDescription("hello");
-        memo1.setShortDescription("cc new");
+        memo4.setMemoNumber(1);
+        memo4.setCoId(contractId);
+        memo4.setLongDescription("hello");
+        memo4.setShortDescription("cc co new");
+        memo4.setScreateBy("digit");
 
-        memo2.setMemoNumber(2);
-        memo2.setCoId(contractId);
-        memo2.setLongDescription("helloWold");
-        memo2.setShortDescription("cc address");
+        memo5.setMemoNumber(2);
+        memo5.setCoId(contractId);
+        memo5.setLongDescription("helloWold");
+        memo5.setShortDescription("cc co address");
+        memo5.setScreateBy("digit");
 
-        memo3.setMemoNumber(3);
-        memo3.setCoId(contractId);
-        memo3.setLongDescription("world");
-        memo3.setShortDescription("cc update");
+        memo6.setMemoNumber(3);
+        memo6.setCoId(contractId);
+        memo6.setLongDescription("world");
+        memo6.setShortDescription("cc co update");
+        memo6.setScreateBy("digit");
 
         try {
-            LogRepo.save(log);
-            memoRepo.save(memo1);
-            memoRepo.save(memo2);
-            memoRepo.save(memo3);
+            logRepo.save(log);
+            memoRepo.save(memo4);
+            memoRepo.save(memo5);
+            memoRepo.save(memo6);
 
             System.out.println("Contract ID: " + contractId);
 
@@ -199,11 +188,36 @@ public class EmployeeServiceImpl {
             e.printStackTrace();
             return false;
         }
-    }*/
+    }
 
+    private String generateXmlRequestContract(int ICCID, int identityValue) {
+        try {
+            // Create the JAXBContext for the desired class
+            JAXBContext context = JAXBContext.newInstance(InsertContractRequestWrapper.class);
+
+            // Create the marshaller
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Create an instance of your request wrapper class
+            InsertContractRequestWrapper wrapper = new InsertContractRequestWrapper();
+
+            // Create an instance of the original request class and set the values
+            InsertContractRequest request = new InsertContractRequest();
+            request.setICCID(ICCID);
+            request.setIdentityvalue(identityValue);
+
+            // Set the request object in the wrapper
+            wrapper.setRequest(request);
+
+            // Marshal the wrapper to a string
+            StringWriter writer = new StringWriter();
+            marshaller.marshal(wrapper, writer);
+            return writer.toString();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return null; // Error occurred during XML generation
+        }
+    }
 }
-
-
-
-
 

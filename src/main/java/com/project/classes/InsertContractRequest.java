@@ -14,26 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
-/**
- * <p>Classe Java pour InsertContractRequest complex type.
- * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
- * <pre>
- * &lt;complexType name="InsertContractRequest">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
- */
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InsertContractRequest", propOrder = {
     "identityvalue",
@@ -76,5 +57,6 @@ public class InsertContractRequest {
     public void setICCID(int value) {
         this.iccid = value;
     }
+
 
 }

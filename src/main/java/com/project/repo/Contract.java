@@ -1,10 +1,8 @@
 package com.project.repo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.*;
+
+
 
     @SuppressWarnings("JpaObjectClassSignatureInspection")
     @Entity
@@ -69,7 +67,9 @@ import javax.persistence.*;
         public String toString() {
             return "Customer{" +
                     "contractId=" + contractId +
+                    ", identityValue='" + identityValue + '\'' +
                     ", ICCID='" + ICCID + '\'' +
+
 
                     '}';
         }

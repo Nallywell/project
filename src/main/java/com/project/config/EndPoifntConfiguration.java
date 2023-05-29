@@ -24,7 +24,6 @@ public class EndPoifntConfiguration {
     public EndPoifntConfiguration(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
-
     @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertCustomerRequest")
     @ResponsePayload
     public JAXBElement<InsertCustomerResponse> insertCustomerResponse(@RequestPayload InsertCustomerRequest request) {
@@ -34,14 +33,14 @@ public class EndPoifntConfiguration {
         return new ObjectFactory().createInsertCustomerResponse(response);
     }
 
-  /*  @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertContractRequest")
+    @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertContractRequest")
     @ResponsePayload
     public JAXBElement<InsertContractResponse> insertContractResponse(@RequestPayload InsertContractRequest request) {
         InsertContractResponse response = new InsertContractResponse();
         employeeService.insertContract(request.getICCID(), request.getIdentityvalue());
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
-    }*/
+    }
 
 
 
