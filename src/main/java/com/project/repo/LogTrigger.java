@@ -25,11 +25,11 @@ public class LogTrigger {
         this.id = id;
     }
 
-    public String getserviceName() {
+    public String getServiceName() {
         return serviceName;
     }
 
-    public void setserviceName(String serviceName) {
+    public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
 

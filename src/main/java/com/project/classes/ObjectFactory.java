@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.05.29 à 07:17:07 PM CEST 
+// Généré le : 2023.05.30 à 05:47:07 PM CEST 
 //
 
 
@@ -31,11 +31,13 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _InsertCrmRequest_QNAME = new QName("http://project.com/classes", "InsertCrmRequest");
     private final static QName _InsertCustomerRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerRequest");
     private final static QName _InsertContractRequest_QNAME = new QName("http://project.com/classes", "InsertContractRequest");
     private final static QName _NotifyLogRequest_QNAME = new QName("http://project.com/classes", "NotifyLogRequest");
     private final static QName _NotifyLogResponse_QNAME = new QName("http://project.com/classes", "NotifyLogResponse");
     private final static QName _InsertContractResponse_QNAME = new QName("http://project.com/classes", "InsertContractResponse");
+    private final static QName _InsertCrmResponse_QNAME = new QName("http://project.com/classes", "InsertCrmResponse");
     private final static QName _InsertCustomerResponse_QNAME = new QName("http://project.com/classes", "InsertCustomerResponse");
 
     /**
@@ -43,6 +45,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link InsertCrmRequest }
+     * 
+     */
+    public InsertCrmRequest createInsertCrmRequest() {
+        return new InsertCrmRequest();
     }
 
     /**
@@ -86,11 +96,28 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link InsertCrmResponse }
+     * 
+     */
+    public InsertCrmResponse createInsertCrmResponse() {
+        return new InsertCrmResponse();
+    }
+
+    /**
      * Create an instance of {@link InsertCustomerResponse }
      * 
      */
     public InsertCustomerResponse createInsertCustomerResponse() {
         return new InsertCustomerResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertCrmRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertCrmRequest")
+    public JAXBElement<InsertCrmRequest> createInsertCrmRequest(InsertCrmRequest value) {
+        return new JAXBElement<InsertCrmRequest>(_InsertCrmRequest_QNAME, InsertCrmRequest.class, null, value);
     }
 
     /**
@@ -136,6 +163,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertContractResponse")
     public JAXBElement<InsertContractResponse> createInsertContractResponse(InsertContractResponse value) {
         return new JAXBElement<InsertContractResponse>(_InsertContractResponse_QNAME, InsertContractResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertCrmResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertCrmResponse")
+    public JAXBElement<InsertCrmResponse> createInsertCrmResponse(InsertCrmResponse value) {
+        return new JAXBElement<InsertCrmResponse>(_InsertCrmResponse_QNAME, InsertCrmResponse.class, null, value);
     }
 
     /**

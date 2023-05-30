@@ -43,12 +43,10 @@ public class EndPoifntConfiguration {
     }
     @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyLogRequest")
     @ResponsePayload
-    public JAXBElement<NotifyLogResponse> NotifyLogResponse(@RequestPayload NotifyLogRequest request) {
+    public JAXBElement<NotifyLogResponse> notifyLogResponse(@RequestPayload NotifyLogRequest request) {
         NotifyLogResponse response = new NotifyLogResponse();
-        employeeService.notifyLog(request.getId(), request.getServiceName());
+        employeeService.notifyESB(request.getId(),request.getServiceName());
         response.setStatus(true);
         return new ObjectFactory().createNotifyLogResponse(response);
-
-
     }
  }

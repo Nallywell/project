@@ -223,20 +223,89 @@ public class EmployeeServiceImpl {
             return null; // Error occurred during XML generation
         }
     }
-    boolean notifyLog(int id, String serviceName) {
-        Log log = new Log();
-        log.setMainInput(id);
-        log.setServiceName(serviceName);
-        log.setStatus("success");
+    public boolean notifyESB(int id , String serviceName) {
+        // Rest of the method implementation
+        // ...
+
+
+//    int id = logTrigger.getId();
+//    String serviceName = logTrigger.getWsName();
+        String xml;
+
+        // Perform logic to retrieve XML based on service name and id
+        Log log = logRepo.findByMainInputAndServiceName(id, serviceName);// test between log and logtrigger
+        if (log != null) {
+            xml = log.getXML();
+
+            // Call the CRM web service to insert data
+//        boolean result = crmWebService.insertDataFromXml(xml);
+            System.out.println("Extracted XML:");
+            System.out.println(xml);
+
+        }
+        return true ;
+    }
+
+    public boolean insertCrm (String xml) {
+       ContractCRM contract = new ContractCRM();
+       CustomerCRM customer = new CustomerCRM();
+      /*  Log log = new Log();
+        Memo memo4 = new Memo();
+        Memo memo5 = new Memo();
+        Memo memo6 = new Memo();
+        contract.setICCID(ICCID);
+        contract.setidentityValue(identityValue);
+        contract.setAction("CREATE");
+        contract.setOfferPromotype("D_IBIZA1500");
+
+        contract = contractRepo.saveAndFlush(contract);
+        int contractId = contract.getContractId();
+
+        log.setMainInput(contractId);
+        log.setServiceName("SetContract");
+        log.setStatus("OK");
+
+        // Generate XML request for the contract
+
+        log.setXml(generateXmlRequestContract(ICCID, identityValue));
+        // Retrieve customerId based on matching identityValue
+        Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+
+        if (customerId != null) {
+            memo4.setCcId(customerId); // Set the customerId as the ccId for memo1
+            memo5.setCcId(customerId); // Set the customerId as the ccId for memo2
+            memo6.setCcId(customerId); // Set the customerId as the ccId for memo3
+        }
+
+        memo4.setMemoNumber(1);
+        memo4.setCoId(contractId);
+        memo4.setLongDescription("hello");
+        memo4.setShortDescription("cc co new");
+        memo4.setScreateBy("digit");
+
+        memo5.setMemoNumber(2);
+        memo5.setCoId(contractId);
+        memo5.setLongDescription("helloWold");
+        memo5.setShortDescription("cc co address");
+        memo5.setScreateBy("digit");
+
+        memo6.setMemoNumber(3);
+        memo6.setCoId(contractId);
+        memo6.setLongDescription("world");
+        memo6.setShortDescription("cc co update");
+        memo6.setScreateBy("digit");
+*/
         try {
-            logRepo.save(log);
+            //logRepo.save(log);
+
+
+          //  System.out.println("Contract ID: " + contractId);
 
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
     }
 }
 

@@ -47,7 +47,7 @@ private int mainInput ;
     public void setStatus( String status) {
         this.status = status;
     }
-      public String get() {
+      public String getXML() {
         return xml;
     }
 

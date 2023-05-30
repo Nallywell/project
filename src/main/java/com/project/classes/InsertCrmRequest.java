@@ -15,17 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour NotifyLogRequest complex type.
+ * <p>Classe Java pour InsertCrmRequest complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="NotifyLogRequest">
+ * &lt;complexType name="InsertCrmRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="serviceName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Xml" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,54 +34,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NotifyLogRequest", propOrder = {
-    "id",
-    "serviceName"
+@XmlType(name = "InsertCrmRequest", propOrder = {
+    "xml"
 })
-public class NotifyLogRequest {
+public class InsertCrmRequest {
 
-    protected int id;
-    @XmlElement(required = true)
-    protected String serviceName;
-
-    /**
-     * Obtient la valeur de la propriété id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
+    @XmlElement(name = "Xml", required = true)
+    protected String xml;
 
     /**
-     * Définit la valeur de la propriété id.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété serviceName.
+     * Obtient la valeur de la propriété xml.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getServiceName() {
-        return serviceName;
+    public String getXml() {
+        return xml;
     }
 
     /**
-     * Définit la valeur de la propriété serviceName.
+     * Définit la valeur de la propriété xml.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setServiceName(String value) {
-        this.serviceName = value;
+    public void setXml(String value) {
+        this.xml = value;
     }
 
 }

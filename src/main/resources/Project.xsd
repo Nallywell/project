@@ -46,6 +46,8 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
+
+
     <element name="NotifyLogRequest" type="tns:NotifyLogRequest"></element>
 
     <complexType name="NotifyLogRequest">
@@ -57,6 +59,21 @@
 
     <element name="NotifyLogResponse" type="tns:NotifyLogResponse"></element>
     <complexType name="NotifyLogResponse">
+        <sequence>
+            <element name="status" type="boolean"></element>
+        </sequence>
+    </complexType>
+    <element name="InsertCrmRequest" type="tns:InsertCrmRequest"></element>
+
+    <complexType name="InsertCrmRequest">
+        <sequence>
+            <element name="Xml" type="string"></element>
+        </sequence>
+    </complexType>
+
+    <element name="InsertCrmResponse" type="tns:InsertCrmResponse"></element>
+
+    <complexType name="InsertCrmResponse">
         <sequence>
             <element name="status" type="boolean"></element>
         </sequence>

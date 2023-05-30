@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 public interface LogRepo extends JpaRepository<Log,Integer> {
 
-
+    Log findByMainInputAndServiceName(int mainInput, String serviceName);
     }
 
 
