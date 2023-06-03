@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.05.30 à 05:47:07 PM CEST 
+// Généré le : 2023.06.03 à 09:52:00 PM CEST 
 //
 
 
@@ -14,12 +14,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCrmResponse complex type.
+ * <p>Classe Java pour InsertContractCrmResponse complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCrmResponse">
+ * &lt;complexType name="InsertContractCrmResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCrmResponse", propOrder = {
+@XmlType(name = "InsertContractCrmResponse", propOrder = {
     "status"
 })
-public class InsertCrmResponse {
+public class InsertContractCrmResponse {
 
     protected boolean status;
 

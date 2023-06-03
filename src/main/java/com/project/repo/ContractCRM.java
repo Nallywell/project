@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "ContractCRM")
 public class ContractCRM {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "CONTRACTID")
     private int contractId;
     @Column(name = "ICCID")

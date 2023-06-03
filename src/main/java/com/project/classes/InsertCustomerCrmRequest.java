@@ -15,15 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerRequest complex type.
+ * <p>Classe Java pour InsertCustomerCrmRequest complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerRequest">
+ * &lt;complexType name="InsertCustomerCrmRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -37,14 +38,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerRequest", propOrder = {
+@XmlType(name = "InsertCustomerCrmRequest", propOrder = {
+    "id",
     "identityvalue",
     "firstName",
     "lastName",
     "birthDate"
 })
-public class InsertCustomerRequest {
+public class InsertCustomerCrmRequest {
 
+    protected int id;
     protected int identityvalue;
     @XmlElement(required = true)
     protected String firstName;
@@ -52,6 +55,22 @@ public class InsertCustomerRequest {
     protected String lastName;
     @XmlElement(required = true)
     protected String birthDate;
+
+    /**
+     * Obtient la valeur de la propriété id.
+     * 
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Définit la valeur de la propriété id.
+     * 
+     */
+    public void setId(int value) {
+        this.id = value;
+    }
 
     /**
      * Obtient la valeur de la propriété identityvalue.

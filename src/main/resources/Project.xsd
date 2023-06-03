@@ -63,17 +63,43 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
-    <element name="InsertCrmRequest" type="tns:InsertCrmRequest"></element>
 
-    <complexType name="InsertCrmRequest">
+    <element name="InsertCustomerCrmRequest" type="tns:InsertCustomerCrmRequest"></element>
+
+    <complexType name="InsertCustomerCrmRequest">
         <sequence>
-            <element name="Xml" type="string"></element>
+            <element name="id" type="int"></element>
+            <element name="identityvalue" type="int"></element>
+            <element name="firstName" type="string"></element>
+            <element name="lastName" type="string"></element>
+            <element name="birthDate" type="string"></element>
         </sequence>
     </complexType>
 
-    <element name="InsertCrmResponse" type="tns:InsertCrmResponse"></element>
+    <element name="InsertCustomerCrmResponse" type="tns:InsertCustomerCrmResponse"></element>
 
-    <complexType name="InsertCrmResponse">
+    <complexType name="InsertCustomerCrmResponse">
+        <sequence>
+            <element name="status" type="boolean"></element>
+        </sequence>
+    </complexType>
+    <element name="InsertCntractCrmResuest"
+             type="tns:InsertContractCrmRequest">
+    </element>
+
+    <complexType name="InsertContractCrmRequest">
+        <sequence>
+            <element name="id" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="iccid" type="int"></element>
+        </sequence>
+    </complexType>
+
+    <element name="InsertContractCrmResponse"
+             type="tns:InsertContractCrmResponse">
+    </element>
+
+    <complexType name="InsertContractCrmResponse">
         <sequence>
             <element name="status" type="boolean"></element>
         </sequence>

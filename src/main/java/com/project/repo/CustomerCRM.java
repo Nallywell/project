@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 @SuppressWarnings("JpaObjectClassSignatureInspection")
 @Entity
-@Table(name = "Customer")
+@Table(name = "CUSTOMERCRM")
 public class CustomerCRM {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "CUSTOMERID")
     private int customerId;
 
@@ -98,11 +98,14 @@ public class CustomerCRM {
     @Override
     public String toString() {
         return "Customer{" +
+                ", customerId='" + customerId + '\'' +
                 "identityValue=" + identityValue +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", customerId='" + customerId + '\'' +
+
                 ", birthDate='" + birthDate + '\'' +
                 '}';
     }
+
+
 }

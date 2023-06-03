@@ -10,22 +10,22 @@ package com.project.classes;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertContractRequest complex type.
+ * <p>Classe Java pour InsertContractCrmRequest complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertContractRequest">
+ * &lt;complexType name="InsertContractCrmRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="identityValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="iccid" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,37 +35,54 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertContractRequest", propOrder = {
-    "identityvalue",
+@XmlType(name = "InsertContractCrmRequest", propOrder = {
+    "id",
+    "identityValue",
     "iccid"
 })
-public class InsertContractRequest {
+public class InsertContractCrmRequest {
 
-    protected int identityvalue;
-    @XmlElement(name = "ICCID")
+    protected int id;
+    protected int identityValue;
     protected int iccid;
 
     /**
-     * Obtient la valeur de la propriété identityvalue.
+     * Obtient la valeur de la propriété id.
      * 
      */
-    public int getIdentityvalue() {
-        return identityvalue;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Définit la valeur de la propriété identityvalue.
+     * Définit la valeur de la propriété id.
      * 
      */
-    public void setIdentityvalue(int value) {
-        this.identityvalue = value;
+    public void setId(int value) {
+        this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété identityValue.
+     * 
+     */
+    public int getIdentityValue() {
+        return identityValue;
+    }
+
+    /**
+     * Définit la valeur de la propriété identityValue.
+     * 
+     */
+    public void setIdentityValue(int value) {
+        this.identityValue = value;
     }
 
     /**
      * Obtient la valeur de la propriété iccid.
      * 
      */
-    public int getICCID() {
+    public int getIccid() {
         return iccid;
     }
 
@@ -73,8 +90,9 @@ public class InsertContractRequest {
      * Définit la valeur de la propriété iccid.
      * 
      */
-    public void setICCID(int value) {
+    public void setIccid(int value) {
         this.iccid = value;
     }
+
 
 }

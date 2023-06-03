@@ -24,6 +24,9 @@ public class EndPoifntConfiguration {
     public EndPoifntConfiguration(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
+
+
+
     @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertCustomerRequest")
     @ResponsePayload
     public JAXBElement<InsertCustomerResponse> insertCustomerResponse(@RequestPayload InsertCustomerRequest request) {
@@ -48,5 +51,25 @@ public class EndPoifntConfiguration {
         employeeService.notifyESB(request.getId(),request.getServiceName());
         response.setStatus(true);
         return new ObjectFactory().createNotifyLogResponse(response);
+    }
+
+
+ @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertCustomerCrmRequest")
+    @ResponsePayload
+    public JAXBElement<InsertCustomerCrmResponse> InsertCustomerCrmResponse(@RequestPayload InsertCustomerCrmRequest request) {
+     InsertCustomerCrmResponse response = new InsertCustomerCrmResponse();
+     boolean result = employeeService.insertCustomerCrm(request.getId(), request.getIdentityvalue(), request.getFirstName(), request.getLastName(), request.getBirthDate());
+     response.setStatus(result);
+        return new ObjectFactory().createInsertCustomerCrmResponse(response);
+    }
+
+
+    @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertContractCrmRequest")
+    @ResponsePayload
+    public JAXBElement<InsertContractCrmResponse> InsertContractCrmResponse(@RequestPayload InsertContractCrmRequest request) {
+        InsertContractCrmResponse response = new InsertContractCrmResponse();
+        boolean result = employeeService.insertContractCrm(request.getId(), request.getIdentityValue(), request.getIccid());
+        response.setStatus(result);
+        return new ObjectFactory().createInsertContractCrmResponse(response);
     }
  }
