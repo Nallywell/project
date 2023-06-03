@@ -101,10 +101,11 @@ public class EmployeeServiceImpl {
         memo3.setScreateBy("DIGIT");
 
         try {
-            logRepo.save(log); // Save the log entry with customerId as mainInput
+            logRepo.save(log);// Save the log entry with customerId as mainInput
             memoRepo.save(memo1);
             memoRepo.save(memo2);
             memoRepo.save(memo3);
+
 
 
             System.out.println("Customer ID: " + customerId);
@@ -335,12 +336,17 @@ public class EmployeeServiceImpl {
         customer.setLastName(lastName);
         customer.setBirthDate(birthDate);
 
+        Log log = new Log();
+        log.setMainInput(id);
+        log.setServiceName("SetCustomer");
+        log.setStatus("success");
+        log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
+
 
         try {
             customerCRMRepo.save(customer);
-
-
             System.out.println("Data inserted into customer table successfully.");
+            logRepo.save(log);
             return true;
         } catch (Exception e) {
             System.out.println("Failed to insert data into customer table " + e.getMessage());
@@ -349,6 +355,13 @@ public class EmployeeServiceImpl {
     }
     @Transactional
     public boolean insertContractCrm(int id, int identityValue, int iccid) {
+
+        Log log = new Log();
+        log.setMainInput(id);
+        log.setServiceName("SetContract");
+        log.setStatus("success");
+        log.setXml(generateXmlRequestContract(iccid, identityValue));
+
         ContractCRM contract = new ContractCRM();
         contract.setContractId(id);
         contract.setidentityValue(identityValue);
@@ -357,6 +370,7 @@ public class EmployeeServiceImpl {
         try {
             contractCRMRepo.save(contract);
             System.out.println("Data inserted into contract table successfully.");
+            logRepo.save(log);
             return true;
         } catch (Exception e) {
             System.out.println("Failed to insert data into contract table: " + e.getMessage());
@@ -367,9 +381,10 @@ public class EmployeeServiceImpl {
 
     public boolean inserinfo(int identityValue, String firstName, String lastName, String birthDate, int iccid) {
         try {
+
             boolean customerInserted = insertCustomer(identityValue, firstName, lastName, birthDate);
             boolean contractInserted = insertContract(iccid, identityValue);
-            System.out.println("succes");
+            System.out.println("success");
 
            return true;
         } catch (Exception e) {
