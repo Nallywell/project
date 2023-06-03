@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.03 à 09:52:00 PM CEST 
+// Généré le : 2023.06.03 à 10:34:40 PM CEST 
 //
 
 
@@ -31,10 +31,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _InsertInfoRequest_QNAME = new QName("http://project.com/classes", "InsertInfoRequest");
     private final static QName _InsertCntractCrmResuest_QNAME = new QName("http://project.com/classes", "InsertCntractCrmResuest");
     private final static QName _InsertCustomerCrmResponse_QNAME = new QName("http://project.com/classes", "InsertCustomerCrmResponse");
     private final static QName _InsertCustomerRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerRequest");
     private final static QName _InsertContractRequest_QNAME = new QName("http://project.com/classes", "InsertContractRequest");
+    private final static QName _InsertInfoResponse_QNAME = new QName("http://project.com/classes", "InsertInfoResponse");
     private final static QName _NotifyLogRequest_QNAME = new QName("http://project.com/classes", "NotifyLogRequest");
     private final static QName _NotifyLogResponse_QNAME = new QName("http://project.com/classes", "NotifyLogResponse");
     private final static QName _InsertCustomerCrmRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerCrmRequest");
@@ -47,6 +49,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link InsertInfoRequest }
+     * 
+     */
+    public InsertInfoRequest createInsertInfoRequest() {
+        return new InsertInfoRequest();
     }
 
     /**
@@ -79,6 +89,14 @@ public class ObjectFactory {
      */
     public InsertContractRequest createInsertContractRequest() {
         return new InsertContractRequest();
+    }
+
+    /**
+     * Create an instance of {@link InsertInfoResponse }
+     * 
+     */
+    public InsertInfoResponse createInsertInfoResponse() {
+        return new InsertInfoResponse();
     }
 
     /**
@@ -130,6 +148,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertInfoRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertInfoRequest")
+    public JAXBElement<InsertInfoRequest> createInsertInfoRequest(InsertInfoRequest value) {
+        return new JAXBElement<InsertInfoRequest>(_InsertInfoRequest_QNAME, InsertInfoRequest.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link InsertContractCrmRequest }{@code >}}
      * 
      */
@@ -163,6 +190,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertContractRequest")
     public JAXBElement<InsertContractRequest> createInsertContractRequest(InsertContractRequest value) {
         return new JAXBElement<InsertContractRequest>(_InsertContractRequest_QNAME, InsertContractRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertInfoResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertInfoResponse")
+    public JAXBElement<InsertInfoResponse> createInsertInfoResponse(InsertInfoResponse value) {
+        return new JAXBElement<InsertInfoResponse>(_InsertInfoResponse_QNAME, InsertInfoResponse.class, null, value);
     }
 
     /**

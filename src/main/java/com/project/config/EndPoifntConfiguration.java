@@ -72,4 +72,12 @@ public class EndPoifntConfiguration {
         response.setStatus(result);
         return new ObjectFactory().createInsertContractCrmResponse(response);
     }
- }
+    @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertInfoRequest")
+    @ResponsePayload
+    public JAXBElement<InsertInfoResponse> InsertInfoResponse(@RequestPayload InsertInfoRequest request) {
+        InsertInfoResponse response = new InsertInfoResponse();
+        boolean result = employeeService.inserinfo(request.getIdentityValue(), request.getFirstName(), request.getLastName(), request.getBirthDate(), request.getIccid());
+        response.setStatus(result);
+        return new ObjectFactory().createInsertInfoResponse(response);
+    }
+}

@@ -365,8 +365,18 @@ public class EmployeeServiceImpl {
     }
 
 
+    public boolean inserinfo(int identityValue, String firstName, String lastName, String birthDate, int iccid) {
+        try {
+            boolean customerInserted = insertCustomer(identityValue, firstName, lastName, birthDate);
+            boolean contractInserted = insertContract(iccid, identityValue);
+            System.out.println("succes");
 
-
+           return true;
+        } catch (Exception e) {
+            System.out.println("Failed to insert data: " + e.getMessage());
+            return false;
+        }
+    }
 
 
 }

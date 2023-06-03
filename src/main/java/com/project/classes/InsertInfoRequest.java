@@ -15,19 +15,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerRequest complex type.
+ * <p>Classe Java pour InsertInfoRequest complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerRequest">
+ * &lt;complexType name="InsertInfoRequest">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="birthDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="IdentityValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="FirstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="LastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="BirthDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Iccid" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,36 +38,40 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerRequest", propOrder = {
-    "identityvalue",
+@XmlType(name = "InsertInfoRequest", propOrder = {
+    "identityValue",
     "firstName",
     "lastName",
-    "birthDate"
+    "birthDate",
+    "iccid"
 })
-public class InsertCustomerRequest {
+public class InsertInfoRequest {
 
-    protected int identityvalue;
-    @XmlElement(required = true)
+    @XmlElement(name = "IdentityValue")
+    protected int identityValue;
+    @XmlElement(name = "FirstName", required = true)
     protected String firstName;
-    @XmlElement(required = true)
+    @XmlElement(name = "LastName", required = true)
     protected String lastName;
-    @XmlElement(required = true)
+    @XmlElement(name = "BirthDate", required = true)
     protected String birthDate;
+    @XmlElement(name = "Iccid")
+    protected int iccid;
 
     /**
-     * Obtient la valeur de la propriété identityvalue.
+     * Obtient la valeur de la propriété identityValue.
      * 
      */
-    public int getIdentityvalue() {
-        return identityvalue;
+    public int getIdentityValue() {
+        return identityValue;
     }
 
     /**
-     * Définit la valeur de la propriété identityvalue.
+     * Définit la valeur de la propriété identityValue.
      * 
      */
-    public void setIdentityvalue(int value) {
-        this.identityvalue = value;
+    public void setIdentityValue(int value) {
+        this.identityValue = value;
     }
 
     /**
@@ -139,6 +144,22 @@ public class InsertCustomerRequest {
      */
     public void setBirthDate(String value) {
         this.birthDate = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété iccid.
+     * 
+     */
+    public int getIccid() {
+        return iccid;
+    }
+
+    /**
+     * Définit la valeur de la propriété iccid.
+     * 
+     */
+    public void setIccid(int value) {
+        this.iccid = value;
     }
 
 }

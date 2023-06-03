@@ -104,5 +104,24 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
+    <element name="InsertInfoRequest" type="tns:InsertInfoRequest"></element>
+
+    <complexType name="InsertInfoRequest">
+        <sequence>
+            <element name="IdentityValue" type="int"></element>
+            <element name="FirstName" type="string"></element>
+            <element name="LastName" type="string"></element>
+            <element name="BirthDate" type="string"></element>
+            <element name="Iccid" type="int"></element>
+        </sequence>
+    </complexType>
+
+    <element name="InsertInfoResponse" type="tns:InsertInfoResponse"></element>
+
+    <complexType name="InsertInfoResponse">
+        <sequence>
+            <element name="status" type="boolean"></element>
+        </sequence>
+    </complexType>
 
 </schema>
