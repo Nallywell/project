@@ -15,20 +15,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerCrmRequest complex type.
+ * <p>Classe Java pour CustomerDetails complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerCrmRequest">
+ * &lt;complexType name="CustomerDetails">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="customerId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="identityValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="birthDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="action" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="custType" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="identityTypeCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,54 +41,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerCrmRequest", propOrder = {
-    "id",
-    "identityvalue",
+@XmlType(name = "CustomerDetails", propOrder = {
+    "customerId",
+    "identityValue",
     "firstName",
     "lastName",
-    "birthDate"
+    "birthDate",
+    "action",
+    "custType",
+    "identityTypeCode"
 })
-public class InsertCustomerCrmRequest {
+public class CustomerDetails {
 
-    protected int id;
-    protected int identityvalue;
+    protected int customerId;
+    protected int identityValue;
     @XmlElement(required = true)
     protected String firstName;
     @XmlElement(required = true)
     protected String lastName;
     @XmlElement(required = true)
     protected String birthDate;
+    @XmlElement(required = true)
+    protected String action;
+    @XmlElement(required = true)
+    protected String custType;
+    @XmlElement(required = true)
+    protected String identityTypeCode;
 
     /**
-     * Obtient la valeur de la propriété id.
+     * Obtient la valeur de la propriété customerId.
      * 
      */
-    public int getId() {
-        return id;
+    public int getCustomerId() {
+        return customerId;
     }
 
     /**
-     * Définit la valeur de la propriété id.
+     * Définit la valeur de la propriété customerId.
      * 
      */
-    public void setId(int value) {
-        this.id = value;
+    public void setCustomerId(int value) {
+        this.customerId = value;
     }
 
     /**
-     * Obtient la valeur de la propriété identityvalue.
+     * Obtient la valeur de la propriété identityValue.
      * 
      */
-    public int getIdentityvalue() {
-        return identityvalue;
+    public int getIdentityValue() {
+        return identityValue;
     }
 
     /**
-     * Définit la valeur de la propriété identityvalue.
+     * Définit la valeur de la propriété identityValue.
      * 
      */
-    public void setIdentityvalue(int value) {
-        this.identityvalue = value;
+    public void setIdentityValue(int value) {
+        this.identityValue = value;
     }
 
     /**
@@ -158,6 +170,78 @@ public class InsertCustomerCrmRequest {
      */
     public void setBirthDate(String value) {
         this.birthDate = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété action.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAction() {
+        return action;
+    }
+
+    /**
+     * Définit la valeur de la propriété action.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAction(String value) {
+        this.action = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété custType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCustType() {
+        return custType;
+    }
+
+    /**
+     * Définit la valeur de la propriété custType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCustType(String value) {
+        this.custType = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété identityTypeCode.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIdentityTypeCode() {
+        return identityTypeCode;
+    }
+
+    /**
+     * Définit la valeur de la propriété identityTypeCode.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIdentityTypeCode(String value) {
+        this.identityTypeCode = value;
     }
 
 }

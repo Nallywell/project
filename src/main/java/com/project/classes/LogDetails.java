@@ -15,19 +15,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour InsertCustomerRequest complex type.
+ * <p>Classe Java pour LogDetails complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="InsertCustomerRequest">
+ * &lt;complexType name="LogDetails">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="lastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="birthDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="mainInput" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="serviceName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="xml" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,108 +37,108 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "InsertCustomerRequest", propOrder = {
-    "identityvalue",
-    "firstName",
-    "lastName",
-    "birthDate"
+@XmlType(name = "LogDetails", propOrder = {
+    "mainInput",
+    "serviceName",
+    "xml",
+    "status"
 })
-public class InsertCustomerRequest {
+public class LogDetails {
 
-    protected int identityvalue;
+    protected int mainInput;
     @XmlElement(required = true)
-    protected String firstName;
+    protected String serviceName;
     @XmlElement(required = true)
-    protected String lastName;
+    protected String xml;
     @XmlElement(required = true)
-    protected String birthDate;
+    protected String status;
 
     /**
-     * Obtient la valeur de la propriété identityvalue.
+     * Obtient la valeur de la propriété mainInput.
      * 
      */
-    public int getIdentityvalue() {
-        return identityvalue;
+    public int getMainInput() {
+        return mainInput;
     }
 
     /**
-     * Définit la valeur de la propriété identityvalue.
+     * Définit la valeur de la propriété mainInput.
      * 
      */
-    public void setIdentityvalue(int value) {
-        this.identityvalue = value;
+    public void setMainInput(int value) {
+        this.mainInput = value;
     }
 
     /**
-     * Obtient la valeur de la propriété firstName.
+     * Obtient la valeur de la propriété serviceName.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFirstName() {
-        return firstName;
+    public String getServiceName() {
+        return serviceName;
     }
 
     /**
-     * Définit la valeur de la propriété firstName.
+     * Définit la valeur de la propriété serviceName.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFirstName(String value) {
-        this.firstName = value;
+    public void setServiceName(String value) {
+        this.serviceName = value;
     }
 
     /**
-     * Obtient la valeur de la propriété lastName.
+     * Obtient la valeur de la propriété xml.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLastName() {
-        return lastName;
+    public String getXml() {
+        return xml;
     }
 
     /**
-     * Définit la valeur de la propriété lastName.
+     * Définit la valeur de la propriété xml.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLastName(String value) {
-        this.lastName = value;
+    public void setXml(String value) {
+        this.xml = value;
     }
 
     /**
-     * Obtient la valeur de la propriété birthDate.
+     * Obtient la valeur de la propriété status.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getBirthDate() {
-        return birthDate;
+    public String getStatus() {
+        return status;
     }
 
     /**
-     * Définit la valeur de la propriété birthDate.
+     * Définit la valeur de la propriété status.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setBirthDate(String value) {
-        this.birthDate = value;
+    public void setStatus(String value) {
+        this.status = value;
     }
 
 }

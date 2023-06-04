@@ -124,4 +124,190 @@
         </sequence>
     </complexType>
 
+
+
+    <element name="GetAllCustomerRequest"
+             type="tns:GetAllCustomerRequest">
+    </element>
+
+    <complexType name="GetAllCustomerRequest"></complexType>
+
+    <element name="GetAllCustomerResponse"
+             type="tns:GetAllCustomerResponse">
+    </element>
+
+    <complexType name="GetAllCustomerResponse">
+        <sequence>
+            <element name="CustomerDetails"
+                     type="tns:CustomerDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="CustomerDetails">
+        <sequence>
+            <element name="customerId" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="firstName" type="string"></element>
+            <element name="lastName" type="string"></element>
+            <element name="birthDate" type="string"></element>
+            <element name="action" type="string"></element>
+            <element name="custType" type="string"></element>
+            <element name="identityTypeCode" type="string"></element>
+        </sequence>
+    </complexType>
+
+
+
+
+    <element name="GetAllContractsRequest"
+             type="tns:GetAllContractsRequest">
+    </element>
+    <complexType name="GetAllContractsRequest"></complexType>
+
+    <element name="GetAllContractsResponse"
+             type="tns:GetAllContractsResponse">
+    </element>
+
+    <complexType name="GetAllContractsResponse">
+        <sequence>
+            <element name="ContractDetails"
+                     type="tns:ContractDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="ContractDetails">
+        <sequence>
+            <element name="contractId" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="ICCID" type="int"></element>
+            <element name="action" type="string"></element>
+            <element name="OfferPromotype" type="string"></element>
+        </sequence>
+    </complexType>
+
+
+
+
+    <element name="GetAllContractCRMsRequest"
+             type="tns:GetAllContractCRMsRequest">
+    </element>
+
+    <complexType name="GetAllContractCRMsRequest"></complexType>
+
+    <element name="GetAllContractCRMsResponse"
+             type="tns:GetAllContractCRMsResponse">
+    </element>
+
+    <complexType name="GetAllContractCRMsResponse">
+        <sequence>
+            <element name="ContractCRMDetails"
+                     type="tns:ContractCRMDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="ContractCRMDetails">
+        <sequence>
+            <element name="contractId" type="int"></element>
+            <element name="ICCID" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="action" type="string"></element>
+            <element name="OfferPromotype" type="string"></element>
+        </sequence>
+    </complexType>
+
+
+
+
+    <element name="GetAllCustomerCRMRequest"
+             type="tns:GetAllCustomerCRMRequest">
+    </element>
+
+    <complexType name="GetAllCustomerCRMRequest"></complexType>
+
+    <element name="GetAllCustomerCRMResponse"
+             type="tns:GetAllCustomerCRMResponse">
+    </element>
+
+    <complexType name="GetAllCustomerCRMResponse">
+        <sequence>
+            <element name="CustomerCRMDetails"
+                     type="tns:CustomerCRMDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="CustomerCRMDetails">
+        <sequence>
+            <element name="customerId" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="firstName" type="string"></element>
+            <element name="lastName" type="string"></element>
+            <element name="birthDate" type="string"></element>
+            <element name="action" type="string"></element>
+            <element name="custType" type="string"></element>
+            <element name="identityTypeCode" type="string"></element>
+        </sequence>
+    </complexType>
+
+
+
+
+
+
+    <element name="GetAllEntityLogRequest"
+             type="tns:GetAllEntityLogRequest">
+    </element>
+
+    <complexType name="GetAllEntityLogRequest"></complexType>
+
+    <element name="GetAllEntityLogResponse"
+             type="tns:GetAllEntityLogResponse">
+    </element>
+
+    <complexType name="GetAllEntityLogResponse">
+        <sequence>
+            <element name="LogDetails"
+                     type="tns:LogDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="LogDetails">
+        <sequence>
+            <element name="mainInput" type="int"></element>
+            <element name="serviceName" type="string"></element>
+            <element name="xml" type="string"></element>
+            <element name="status" type="string"></element>
+        </sequence>
+    </complexType>
+
+
+    <element name="GetAllMemosRequest"
+             type="tns:GetAllMemosRequest">
+    </element>
+
+    <complexType name="GetAllMemosRequest"></complexType>
+
+    <element name="GetAllMemosResponse"
+             type="tns:GetAllMemosResponse">
+    </element>
+
+    <complexType name="GetAllMemosResponse">
+        <sequence>
+            <element name="MemoDetails"
+                     type="tns:MemoDetails" maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+    <complexType name="MemoDetails">
+        <sequence>
+            <element name="MemoNumber" type="int"></element>
+            <element name="ccId" type="int"></element>
+            <element name="coId" type="int"></element>
+            <element name="shortDescription" type="string"></element>
+            <element name="longDescription" type="string"></element>
+            <element name="createBy" type="string"></element>
+        </sequence>
+    </complexType>
+
+
 </schema>

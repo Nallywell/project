@@ -21,6 +21,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.xml.sax.InputSource;
 
@@ -52,61 +54,67 @@ public class EmployeeServiceImpl {
 
     }
 
+
     boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
-        Customer customer = new Customer();
+
+
+
         Log log = new Log();
-        Memo memo1 = new Memo();
-
-        Memo memo2 = new Memo();
-        Memo memo3 = new Memo();
-        customer.setIdentityValue(identityValue);
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setBirthDate(birthDate);
-        customer.setAction("CREATE");
-        customer.setcustType("C");
-        customer.setidentityTypeCode(2);
-
-        // Save the customer to generate the customerId
-        customer = customerRepo.saveAndFlush(customer);
-        int customerId = customer.getCustomerId();
-
-        log.setMainInput(customerId);
         log.setServiceName("SetCustomer");
-        log.setStatus("OK");
+        log.setStatus("INIT");
         log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
-        memo1.setMemoNumber(1);
-        memo2.setMemoNumber(2);
-        memo3.setMemoNumber(3);
 
-        memo1.setMemoNumber(1);
-        memo1.setCcId(customerId);
-        memo1.setCoId(null);
-        memo1.setLongDescription("hello");
-        memo1.setShortDescription("cc new");
-        memo1.setScreateBy("DIGIT");
-
-        memo2.setMemoNumber(2);
-        memo2.setCcId(customerId);
-        memo2.setCoId(null);
-        memo2.setLongDescription("helloWold");
-        memo2.setShortDescription("cc address");
-        memo2.setScreateBy("DIGIT");
-
-        memo3.setMemoNumber(3);
-        memo3.setCcId(customerId);
-        memo3.setCoId(null);
-        memo3.setLongDescription("world");
-        memo3.setShortDescription("cc_update");
-        memo3.setScreateBy("DIGIT");
 
         try {
-            logRepo.save(log);// Save the log entry with customerId as mainInput
+            log = logRepo.saveAndFlush(log); // Save the log entry and obtain the log ID
+            System.out.println("the log table before customer creation:"+log);
+            Customer customer = new Customer();
+            Memo memo1 = new Memo();
+            Memo memo2 = new Memo();
+            Memo memo3 = new Memo();
+
+            customer.setIdentityValue(identityValue);
+            customer.setFirstName(firstName);
+            customer.setLastName(lastName);
+            customer.setBirthDate(birthDate);
+            customer.setAction("CREATE");
+            customer.setcustType("C");
+            customer.setidentityTypeCode(2);
+
+            // Save the customer to generate the customerId
+            customer = customerRepo.saveAndFlush(customer);
+            int customerId = customer.getCustomerId();
+
+            log.setMainInput(customerId);
+            log.setStatus("OK");
+
+            // Update the log entry with customerId and status
+            logRepo.save(log);
+            System.out.println("the log table after customer creation:"+log);
+            // Create and save the memo entries
+            memo1.setMemoNumber(1);
+            memo1.setCcId(customerId);
+            memo1.setCoId(null);
+            memo1.setLongDescription("hello");
+            memo1.setShortDescription("cc new");
+            memo1.setScreateBy("DIGIT");
             memoRepo.save(memo1);
+
+            memo2.setMemoNumber(2);
+            memo2.setCcId(customerId);
+            memo2.setCoId(null);
+            memo2.setLongDescription("helloWorld");
+            memo2.setShortDescription("cc address");
+            memo2.setScreateBy("DIGIT");
             memoRepo.save(memo2);
+
+            memo3.setMemoNumber(3);
+            memo3.setCcId(customerId);
+            memo3.setCoId(null);
+            memo3.setLongDescription("world");
+            memo3.setShortDescription("cc_update");
+            memo3.setScreateBy("DIGIT");
             memoRepo.save(memo3);
-
-
 
             System.out.println("Customer ID: " + customerId);
 
@@ -115,8 +123,7 @@ public class EmployeeServiceImpl {
             e.printStackTrace();
             return false; // Return false if there was an error during the insertion
         }
-    }// Generate XML request using JAXB
-
+    }
     private String generateXmlRequest(int identityValue, String firstName, String lastName, String birthDate) {
         try {
             // Create the JAXBContext for the desired class
@@ -149,7 +156,8 @@ public class EmployeeServiceImpl {
         }
     }
 
-    public boolean insertContract(int ICCID, int identityValue) {
+
+ /*   public boolean insertContract(int ICCID, int identityValue) {
         Contract contract = new Contract();
 
         Log log = new Log();
@@ -211,7 +219,73 @@ public class EmployeeServiceImpl {
             e.printStackTrace();
             return false;
         }
-    }
+    }*/
+ public boolean insertContract(int ICCID, int identityValue) {
+     Contract contract = new Contract();
+     Log log = new Log();
+     Memo memo4 = new Memo();
+     Memo memo5 = new Memo();
+     Memo memo6 = new Memo();
+
+     contract.setICCID(ICCID);
+     contract.setidentityValue(identityValue);
+     contract.setAction("CREATE");
+     contract.setOfferPromotype("D_IBIZA1500");
+
+     try {
+         log.setServiceName("SetContract");
+         log.setStatus("INIT");
+         log.setXml(generateXmlRequestContract(ICCID, identityValue));
+
+         logRepo.save(log); // Save the log entry with initial status and XML
+         System.out.println("the log table after contract creation:"+log);
+
+         contract = contractRepo.saveAndFlush(contract);
+         int contractId = contract.getContractId();
+
+         log.setMainInput(contractId);
+         log.setStatus("OK");
+
+         logRepo.save(log); // Update the log entry with contractId and final status
+         System.out.println("the log table after contract creation:"+log);
+
+         Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+         if (customerId != null) {
+             memo4.setCcId(customerId);
+             memo5.setCcId(customerId);
+             memo6.setCcId(customerId);
+         }
+
+         memo4.setMemoNumber(1);
+         memo4.setCoId(contractId);
+         memo4.setLongDescription("hello");
+         memo4.setShortDescription("cc co new");
+         memo4.setScreateBy("digit");
+         memoRepo.save(memo4);
+
+         memo5.setMemoNumber(2);
+         memo5.setCoId(contractId);
+         memo5.setLongDescription("helloWorld");
+         memo5.setShortDescription("cc co address");
+         memo5.setScreateBy("digit");
+         memoRepo.save(memo5);
+
+         memo6.setMemoNumber(3);
+         memo6.setCoId(contractId);
+         memo6.setLongDescription("world");
+         memo6.setShortDescription("cc co update");
+         memo6.setScreateBy("digit");
+         memoRepo.save(memo6);
+
+         System.out.println("Contract ID: " + contractId);
+
+         return true;
+     } catch (Exception e) {
+         e.printStackTrace();
+         return false;
+     }
+ }
+
 
     private String generateXmlRequestContract(int ICCID, int identityValue) {
         try {
@@ -379,18 +453,62 @@ public class EmployeeServiceImpl {
     }
 
 
-    public boolean inserinfo(int identityValue, String firstName, String lastName, String birthDate, int iccid) {
+
+    public boolean insertInfo(int identityValue, String firstName, String lastName, String birthDate, int iccid) {
         try {
+            // Validate input types and non-empty values
+            if (!(identityValue > 0) || firstName.isEmpty() || lastName.isEmpty() || birthDate.isEmpty() || iccid < 0) {
+                String errorMessage = "Invalid input: ";
+                if (!(identityValue > 0)) {
+                    errorMessage += "identityValue has an incorrect type,   ";
+                }
+                if (!(firstName instanceof String)) {
+                    errorMessage += "firstName has an incorrect type, ";
+                }
+                if (!(lastName instanceof String)) {
+                    errorMessage += "lastName has an incorrect type, ";
+                }
+                if (!(birthDate instanceof String)) {
+                    errorMessage += "birthDate has an incorrect type, ";
+                }
+                if (iccid < 0) {
+                    errorMessage += "iccid has an incorrect type,  ";
+                }
+
+                System.out.println(errorMessage);
+                return false; // Return false if any value is empty, has an incorrect type, identityValue is not a positive integer, or iccid is negative
+            }
 
             boolean customerInserted = insertCustomer(identityValue, firstName, lastName, birthDate);
             boolean contractInserted = insertContract(iccid, identityValue);
-            System.out.println("success");
+            System.out.println("Success");
 
-           return true;
+            return true; // Return true if the insertion was successful
         } catch (Exception e) {
             System.out.println("Failed to insert data: " + e.getMessage());
-            return false;
+            return false; // Return false if there was an error during insertion
         }
+    }
+
+
+    public List<Customer> getAllCustomers() {
+        return customerRepo.findAll();
+    }
+    public List<Contract> getAllContracts() {
+        return contractRepo.findAll();
+    }
+    public List<ContractCRM> getAllContractCRM() {
+        return contractCRMRepo.findAll();
+    }
+    public List<CustomerCRM> getAllCustomerCRM() {
+        return customerCRMRepo.findAll();
+    }
+    public List<Log> getAllEntityLog() {
+        return logRepo.findAll();
+    }
+
+    public List<Memo> getAllMemo() {
+        return memoRepo.findAll();
     }
 
 
