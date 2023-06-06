@@ -277,6 +277,8 @@
             <element name="serviceName" type="string"></element>
             <element name="xml" type="string"></element>
             <element name="status" type="string"></element>
+            <element name="Source" type="string"></element>
+            <element name="Destination" type="string"></element>
         </sequence>
     </complexType>
 

@@ -9,6 +9,8 @@ import javax.persistence.*;
 
 public class Log {
     @Id
+    @Column(name = "TRANSACTION_ID")
+    private int TransactionId;
     @Column(name = "MAININPUT")
 private int mainInput ;
 
@@ -20,6 +22,12 @@ private int mainInput ;
     private String xml;
     @Column(name = "STATUS")
     private String status;
+
+    @Column(name = "SOURCE")
+    private String Source;
+
+    @Column(name = "DESTINATION")
+    private String Destination;
     public Log() {
     }
 
@@ -54,15 +62,40 @@ private int mainInput ;
     public void setXml( String xml) {
         this.xml = xml;
     }
+    public int getTransactionId() {
+        return TransactionId;
+    }
+
+    public void setTransactionId( int TransactionId) {
+        this.TransactionId = TransactionId;
+    }
+    public String getSource() {
+        return Source;
+    }
+
+    public void setSource( String Source) {
+        this.Source = Source;
+    }
+
+    public String getDestination() {
+        return Destination;
+    }
+
+    public void setDestination( String Destination) {
+        this.Destination = Destination;
+    }
 
     @Override
     public String toString() {
         return "Log{" +
+                "TransactionId=" + TransactionId +
                 "mainInput=" + mainInput +
-
                 ", serviceName='" + serviceName + '\'' +
                 "status=" + status +
                 "xml=" + xml +
+                "Source=" + Source +
+                "Destination=" + Destination +
+
 
                 '}';
     }

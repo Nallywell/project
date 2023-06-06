@@ -10,7 +10,8 @@ import java.sql.Timestamp;
 @Table(name ="Memo")
 
 public class Memo {
-        @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
         @Column(name = "MEMO_NUMBER")
         private int MemoNumber;
 
@@ -28,6 +29,7 @@ public class Memo {
 
      @Column(name = "CREATDBY")
     private String createBy;
+
         public Memo() {
         }
 
@@ -82,6 +84,7 @@ public class Memo {
         @Override
         public String toString() {
             return "Log{" +
+
                     "MemoNumber=" + MemoNumber +
                     ", ccId=" + ccId +
                     ", coId=" + coId +

@@ -52,7 +52,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<NotifyLogResponse> notifyLogResponse(@RequestPayload NotifyLogRequest request) {
         NotifyLogResponse response = new NotifyLogResponse();
-        employeeService.notifyESB(request.getId(),request.getServiceName());
+        employeeService.NotifyESB(request.getId(),request.getServiceName());
         response.setStatus(true);
         return new ObjectFactory().createNotifyLogResponse(response);
     }

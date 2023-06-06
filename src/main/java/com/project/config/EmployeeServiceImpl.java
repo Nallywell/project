@@ -63,7 +63,8 @@ public class EmployeeServiceImpl {
         log.setServiceName("SetCustomer");
         log.setStatus("INIT");
         log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
-
+        log.setSource("DIGIT");
+        log.setDestination("BSCS");
 
         try {
             log = logRepo.saveAndFlush(log); // Save the log entry and obtain the log ID
@@ -87,12 +88,15 @@ public class EmployeeServiceImpl {
 
             log.setMainInput(customerId);
             log.setStatus("OK");
+            log.setSource("BSCS");
+            log.setDestination("DIGIT");
+
 
             // Update the log entry with customerId and status
             logRepo.save(log);
             System.out.println("the log table after customer creation:"+log);
             // Create and save the memo entries
-            memo1.setMemoNumber(1);
+
             memo1.setCcId(customerId);
             memo1.setCoId(null);
             memo1.setLongDescription("hello");
@@ -100,7 +104,6 @@ public class EmployeeServiceImpl {
             memo1.setScreateBy("DIGIT");
             memoRepo.save(memo1);
 
-            memo2.setMemoNumber(2);
             memo2.setCcId(customerId);
             memo2.setCoId(null);
             memo2.setLongDescription("helloWorld");
@@ -108,7 +111,6 @@ public class EmployeeServiceImpl {
             memo2.setScreateBy("DIGIT");
             memoRepo.save(memo2);
 
-            memo3.setMemoNumber(3);
             memo3.setCcId(customerId);
             memo3.setCoId(null);
             memo3.setLongDescription("world");
@@ -156,70 +158,6 @@ public class EmployeeServiceImpl {
         }
     }
 
-
- /*   public boolean insertContract(int ICCID, int identityValue) {
-        Contract contract = new Contract();
-
-        Log log = new Log();
-        Memo memo4 = new Memo();
-        Memo memo5 = new Memo();
-        Memo memo6 = new Memo();
-        contract.setICCID(ICCID);
-        contract.setidentityValue(identityValue);
-        contract.setAction("CREATE");
-        contract.setOfferPromotype("D_IBIZA1500");
-
-        contract = contractRepo.saveAndFlush(contract);
-        int contractId = contract.getContractId();
-
-        log.setMainInput(contractId);
-        log.setServiceName("SetContract");
-        log.setStatus("OK");
-
-        // Generate XML request for the contract
-
-        log.setXml(generateXmlRequestContract(ICCID, identityValue));
-        // Retrieve customerId based on matching identityValue
-        Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
-
-        if (customerId != null) {
-            memo4.setCcId(customerId); // Set the customerId as the ccId for memo1
-            memo5.setCcId(customerId); // Set the customerId as the ccId for memo2
-            memo6.setCcId(customerId); // Set the customerId as the ccId for memo3
-        }
-
-        memo4.setMemoNumber(1);
-        memo4.setCoId(contractId);
-        memo4.setLongDescription("hello");
-        memo4.setShortDescription("cc co new");
-        memo4.setScreateBy("digit");
-
-        memo5.setMemoNumber(2);
-        memo5.setCoId(contractId);
-        memo5.setLongDescription("helloWold");
-        memo5.setShortDescription("cc co address");
-        memo5.setScreateBy("digit");
-
-        memo6.setMemoNumber(3);
-        memo6.setCoId(contractId);
-        memo6.setLongDescription("world");
-        memo6.setShortDescription("cc co update");
-        memo6.setScreateBy("digit");
-
-        try {
-            logRepo.save(log);
-            memoRepo.save(memo4);
-            memoRepo.save(memo5);
-            memoRepo.save(memo6);
-
-            System.out.println("Contract ID: " + contractId);
-
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }*/
  public boolean insertContract(int ICCID, int identityValue) {
      Contract contract = new Contract();
      Log log = new Log();
@@ -236,6 +174,9 @@ public class EmployeeServiceImpl {
          log.setServiceName("SetContract");
          log.setStatus("INIT");
          log.setXml(generateXmlRequestContract(ICCID, identityValue));
+         log.setSource("DIGIT");
+         log.setDestination("BSCS");
+
 
          logRepo.save(log); // Save the log entry with initial status and XML
          System.out.println("the log table after contract creation:"+log);
@@ -245,6 +186,9 @@ public class EmployeeServiceImpl {
 
          log.setMainInput(contractId);
          log.setStatus("OK");
+         log.setSource("BSCS");
+         log.setDestination("DIGIT");
+
 
          logRepo.save(log); // Update the log entry with contractId and final status
          System.out.println("the log table after contract creation:"+log);
@@ -256,21 +200,21 @@ public class EmployeeServiceImpl {
              memo6.setCcId(customerId);
          }
 
-         memo4.setMemoNumber(1);
+
          memo4.setCoId(contractId);
          memo4.setLongDescription("hello");
          memo4.setShortDescription("cc co new");
          memo4.setScreateBy("digit");
          memoRepo.save(memo4);
 
-         memo5.setMemoNumber(2);
+
          memo5.setCoId(contractId);
          memo5.setLongDescription("helloWorld");
          memo5.setShortDescription("cc co address");
          memo5.setScreateBy("digit");
          memoRepo.save(memo5);
 
-         memo6.setMemoNumber(3);
+
          memo6.setCoId(contractId);
          memo6.setLongDescription("world");
          memo6.setShortDescription("cc co update");
@@ -320,7 +264,7 @@ public class EmployeeServiceImpl {
 
 
     @Transactional
-    public boolean notifyESB(int id, String serviceName) {
+    public boolean NotifyESB(int id, String serviceName) {
         // Perform logic to retrieve XML based on service name and id
         Log log = logRepo.findByMainInputAndServiceName(id, serviceName);
         if (log == null) {
@@ -330,7 +274,22 @@ public class EmployeeServiceImpl {
         String xml = log.getXML();
         System.out.println(xml);
 
+      /*  Log log1 = new Log();
+        log1.setStatus("success");
+        log1.setXml(xml);
+        log1.setSource("BSCS");
+        log1.setDestination("CRM");
+        log1.setServiceName("SetContract");
+        if (serviceName.equals("SetCustomer")) {
+            log1.setServiceName("SetCustomer");
+        } else if  (serviceName.equals("SetContract"))  {
+            log1.setServiceName("SetContract");
+        }*/
+
+
+
         try {
+
             // Parse the XML string
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -354,6 +313,8 @@ public class EmployeeServiceImpl {
                 System.out.println("Last Name: " + lastName);
                 System.out.println("Birth Date: " + birthDate);
 
+
+
                 // Insert data into CustomerCRM table
                 boolean result = insertCustomerCrm(id, identityValue, firstName, lastName, birthDate);
 
@@ -372,9 +333,6 @@ public class EmployeeServiceImpl {
                 int identityValue = Integer.parseInt(identityValueList.item(0).getTextContent());
                 int iccid = Integer.parseInt(iccidList.item(0).getTextContent());
 
-                // Print the extracted values
-                System.out.println("Identity Value: " + identityValue);
-                System.out.println("ICCID: " + iccid);
 
                 // Insert data into contract table
                 boolean result = insertContractCrm(id, identityValue, iccid);
@@ -415,6 +373,8 @@ public class EmployeeServiceImpl {
         log.setServiceName("SetCustomer");
         log.setStatus("success");
         log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
+        log.setSource("CRM");
+        log.setDestination("ESB");
 
 
         try {
@@ -435,6 +395,8 @@ public class EmployeeServiceImpl {
         log.setServiceName("SetContract");
         log.setStatus("success");
         log.setXml(generateXmlRequestContract(iccid, identityValue));
+        log.setSource("CRM");
+        log.setDestination("ESB");
 
         ContractCRM contract = new ContractCRM();
         contract.setContractId(id);
