@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.06 à 05:05:13 PM CEST 
+// Généré le : 2023.06.06 à 05:13:53 PM CEST 
 //
 
 
@@ -36,11 +36,10 @@ public class ObjectFactory {
     private final static QName _GetAllContractsResponse_QNAME = new QName("http://project.com/classes", "GetAllContractsResponse");
     private final static QName _GetAllCustomerResponse_QNAME = new QName("http://project.com/classes", "GetAllCustomerResponse");
     private final static QName _InsertContractRequest_QNAME = new QName("http://project.com/classes", "InsertContractRequest");
+    private final static QName _NotifyESBResponse_QNAME = new QName("http://project.com/classes", "NotifyESBResponse");
     private final static QName _InsertInfoResponse_QNAME = new QName("http://project.com/classes", "InsertInfoResponse");
     private final static QName _GetAllMemosResponse_QNAME = new QName("http://project.com/classes", "GetAllMemosResponse");
-    private final static QName _NotifyLogRequest_QNAME = new QName("http://project.com/classes", "NotifyLogRequest");
     private final static QName _GetAllCustomerCRMRequest_QNAME = new QName("http://project.com/classes", "GetAllCustomerCRMRequest");
-    private final static QName _NotifyLogResponse_QNAME = new QName("http://project.com/classes", "NotifyLogResponse");
     private final static QName _InsertCustomerCrmRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerCrmRequest");
     private final static QName _GetAllEntityLogRequest_QNAME = new QName("http://project.com/classes", "GetAllEntityLogRequest");
     private final static QName _InsertContractCrmResponse_QNAME = new QName("http://project.com/classes", "InsertContractCrmResponse");
@@ -48,6 +47,7 @@ public class ObjectFactory {
     private final static QName _GetAllCustomerRequest_QNAME = new QName("http://project.com/classes", "GetAllCustomerRequest");
     private final static QName _InsertCntractCrmResuest_QNAME = new QName("http://project.com/classes", "InsertCntractCrmResuest");
     private final static QName _InsertCustomerRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerRequest");
+    private final static QName _NotifyESBRequest_QNAME = new QName("http://project.com/classes", "NotifyESBRequest");
     private final static QName _GetAllContractCRMsRequest_QNAME = new QName("http://project.com/classes", "GetAllContractCRMsRequest");
     private final static QName _GetAllCustomerCRMResponse_QNAME = new QName("http://project.com/classes", "GetAllCustomerCRMResponse");
     private final static QName _GetAllEntityLogResponse_QNAME = new QName("http://project.com/classes", "GetAllEntityLogResponse");
@@ -77,6 +77,14 @@ public class ObjectFactory {
      */
     public InsertCustomerRequest createInsertCustomerRequest() {
         return new InsertCustomerRequest();
+    }
+
+    /**
+     * Create an instance of {@link NotifyESBRequest }
+     * 
+     */
+    public NotifyESBRequest createNotifyESBRequest() {
+        return new NotifyESBRequest();
     }
 
     /**
@@ -168,6 +176,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link NotifyESBResponse }
+     * 
+     */
+    public NotifyESBResponse createNotifyESBResponse() {
+        return new NotifyESBResponse();
+    }
+
+    /**
      * Create an instance of {@link InsertInfoResponse }
      * 
      */
@@ -192,14 +208,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NotifyLogRequest }
-     * 
-     */
-    public NotifyLogRequest createNotifyLogRequest() {
-        return new NotifyLogRequest();
-    }
-
-    /**
      * Create an instance of {@link GetAllCustomerCRMRequest }
      * 
      */
@@ -221,14 +229,6 @@ public class ObjectFactory {
      */
     public GetAllEntityLogRequest createGetAllEntityLogRequest() {
         return new GetAllEntityLogRequest();
-    }
-
-    /**
-     * Create an instance of {@link NotifyLogResponse }
-     * 
-     */
-    public NotifyLogResponse createNotifyLogResponse() {
-        return new NotifyLogResponse();
     }
 
     /**
@@ -349,6 +349,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyESBResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyESBResponse")
+    public JAXBElement<NotifyESBResponse> createNotifyESBResponse(NotifyESBResponse value) {
+        return new JAXBElement<NotifyESBResponse>(_NotifyESBResponse_QNAME, NotifyESBResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link InsertInfoResponse }{@code >}}
      * 
      */
@@ -367,30 +376,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyLogRequest }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyLogRequest")
-    public JAXBElement<NotifyLogRequest> createNotifyLogRequest(NotifyLogRequest value) {
-        return new JAXBElement<NotifyLogRequest>(_NotifyLogRequest_QNAME, NotifyLogRequest.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllCustomerCRMRequest }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://project.com/classes", name = "GetAllCustomerCRMRequest")
     public JAXBElement<GetAllCustomerCRMRequest> createGetAllCustomerCRMRequest(GetAllCustomerCRMRequest value) {
         return new JAXBElement<GetAllCustomerCRMRequest>(_GetAllCustomerCRMRequest_QNAME, GetAllCustomerCRMRequest.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyLogResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyLogResponse")
-    public JAXBElement<NotifyLogResponse> createNotifyLogResponse(NotifyLogResponse value) {
-        return new JAXBElement<NotifyLogResponse>(_NotifyLogResponse_QNAME, NotifyLogResponse.class, null, value);
     }
 
     /**
@@ -454,6 +445,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertCustomerRequest")
     public JAXBElement<InsertCustomerRequest> createInsertCustomerRequest(InsertCustomerRequest value) {
         return new JAXBElement<InsertCustomerRequest>(_InsertCustomerRequest_QNAME, InsertCustomerRequest.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NotifyESBRequest }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "NotifyESBRequest")
+    public JAXBElement<NotifyESBRequest> createNotifyESBRequest(NotifyESBRequest value) {
+        return new JAXBElement<NotifyESBRequest>(_NotifyESBRequest_QNAME, NotifyESBRequest.class, null, value);
     }
 
     /**

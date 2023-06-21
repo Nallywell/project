@@ -264,7 +264,7 @@ public class EmployeeServiceImpl {
 
 
     @Transactional
-    public boolean NotifyESB(int id, String serviceName) {
+    public boolean notifyESB(int id, String serviceName) {
         // Perform logic to retrieve XML based on service name and id
         Log log = logRepo.findByMainInputAndServiceName(id, serviceName);
         if (log == null) {
@@ -273,6 +273,8 @@ public class EmployeeServiceImpl {
         }
         String xml = log.getXML();
         System.out.println(xml);
+        System.out.println("call notifyEsb");
+
 
       /*  Log log1 = new Log();
         log1.setStatus("success");

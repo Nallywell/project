@@ -48,14 +48,22 @@ public class EndPoifntConfiguration {
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
     }
-    @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyLogRequest")
+  /*  @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyLogRequest")
     @ResponsePayload
     public JAXBElement<NotifyLogResponse> notifyLogResponse(@RequestPayload NotifyLogRequest request) {
         NotifyLogResponse response = new NotifyLogResponse();
         employeeService.NotifyESB(request.getId(),request.getServiceName());
         response.setStatus(true);
         return new ObjectFactory().createNotifyLogResponse(response);
-    }
+    }*/
+  @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyESBRequest")
+  @ResponsePayload
+  public JAXBElement<NotifyESBResponse> notifyESBResponse(@RequestPayload NotifyESBRequest request) {
+      NotifyESBResponse response = new NotifyESBResponse();
+      employeeService.notifyESB(request.getId(),request.getServiceName());
+      response.setStatus(true);
+      return new ObjectFactory().createNotifyESBResponse(response);
+  }
 
 
  @PayloadRoot(namespace = "http://project.com/classes", localPart = "InsertCustomerCrmRequest")
@@ -80,7 +88,8 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertInfoResponse> InsertInfoResponse(@RequestPayload InsertInfoRequest request) {
         InsertInfoResponse response = new InsertInfoResponse();
-        boolean result = employeeService.insertInfo(request.getIdentityValue(), request.getFirstName(), request.getLastName(), request.getBirthDate(), request.getIccid());
+        boolean result = employeeService.insertInfo(request.getIdentityValue(), request.getFirstName(),
+                request.getLastName(), request.getBirthDate(), request.getIccid());
         response.setStatus(result);
         return new ObjectFactory().createInsertInfoResponse(response);
 

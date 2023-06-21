@@ -47,18 +47,17 @@
         </sequence>
     </complexType>
 
+    <element name="NotifyESBRequest" type="tns:NotifyESBRequest"></element>
 
-    <element name="NotifyLogRequest" type="tns:NotifyLogRequest"></element>
-
-    <complexType name="NotifyLogRequest">
+    <complexType name="NotifyESBRequest">
         <sequence>
             <element name="id" type="int"></element>
             <element name="serviceName" type="string"></element>
         </sequence>
     </complexType>
 
-    <element name="NotifyLogResponse" type="tns:NotifyLogResponse"></element>
-    <complexType name="NotifyLogResponse">
+    <element name="NotifyESBResponse" type="tns:NotifyESBResponse"></element>
+    <complexType name="NotifyESBResponse">
         <sequence>
             <element name="status" type="boolean"></element>
         </sequence>
@@ -277,8 +276,7 @@
             <element name="serviceName" type="string"></element>
             <element name="xml" type="string"></element>
             <element name="status" type="string"></element>
-            <element name="Source" type="string"></element>
-            <element name="Destination" type="string"></element>
+
         </sequence>
     </complexType>
 
