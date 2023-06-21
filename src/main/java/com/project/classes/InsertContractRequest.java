@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.06 à 05:13:53 PM CEST 
+// Généré le : 2023.06.21 à 11:22:37 PM CEST 
 //
 
 
@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="identityvalue" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="OfferPromotype" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="networkType" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,13 +39,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InsertContractRequest", propOrder = {
     "identityvalue",
-    "iccid"
+    "iccid",
+    "offerPromotype",
+    "networkType"
 })
 public class InsertContractRequest {
 
     protected int identityvalue;
     @XmlElement(name = "ICCID")
     protected int iccid;
+    @XmlElement(name = "OfferPromotype", required = true)
+    protected String offerPromotype;
+    @XmlElement(required = true)
+    protected String networkType;
 
     /**
      * Obtient la valeur de la propriété identityvalue.
@@ -75,6 +83,54 @@ public class InsertContractRequest {
      */
     public void setICCID(int value) {
         this.iccid = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété offerPromotype.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOfferPromotype() {
+        return offerPromotype;
+    }
+
+    /**
+     * Définit la valeur de la propriété offerPromotype.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOfferPromotype(String value) {
+        this.offerPromotype = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété networkType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNetworkType() {
+        return networkType;
+    }
+
+    /**
+     * Définit la valeur de la propriété networkType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNetworkType(String value) {
+        this.networkType = value;
     }
 
 }

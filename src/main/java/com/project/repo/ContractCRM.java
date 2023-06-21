@@ -21,6 +21,10 @@ public class ContractCRM {
     private String action;
     @Column(name = "OFFER_PROMO_TYPE")
     private String OfferPromotype;
+    @Column(name = "CUSTOMERID")
+    private int customerId;
+    @Column(name = "NETWORKTYPE")
+    private String networkType;
     public ContractCRM() {
     }
 
@@ -62,13 +66,30 @@ public class ContractCRM {
     public void setOfferPromotype(String OfferPromotype) {
         this.OfferPromotype = OfferPromotype;
     }
+    public int getcustomerId() {
+        return customerId;
+    }
 
+    public void setcustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+    public String getnetworkType() {
+        return networkType;
+    }
+
+    public void setnetworkType(String networkType) {
+        this.networkType = networkType;
+    }
     @Override
     public String toString() {
         return "Customer{" +
                 "contractId=" + contractId +
                 ", identityValue='" + identityValue + '\'' +
                 ", ICCID='" + ICCID + '\'' +
+                ", OfferPromotype='" + OfferPromotype + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", networkType='" + networkType + '\'' +
+
                 '}';
     }
 

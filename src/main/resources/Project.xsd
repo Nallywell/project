@@ -9,9 +9,17 @@
     <complexType name="InsertCustomerRequest">
         <sequence>
             <element name="identityvalue" type="int"></element>
+            <element name="title" type="string"></element>
             <element name="firstName" type="string"></element>
             <element name="lastName" type="string"></element>
             <element name="birthDate" type="string"></element>
+            <element name="identityTypeCode" type="int"></element>
+            <element name="deliveryD" type="string"></element>
+            <element name="address" type="string"></element>
+            <element name="commune" type="string"></element>
+            <element name="wilaya" type="string"></element>
+
+
         </sequence>
     </complexType>
 
@@ -33,6 +41,8 @@
 
             <element name="identityvalue" type="int"></element>
             <element name="ICCID" type="int"></element>
+            <element name="OfferPromotype" type="string"></element>
+            <element name="networkType" type="string"></element>
 
         </sequence>
     </complexType>
@@ -69,9 +79,15 @@
         <sequence>
             <element name="id" type="int"></element>
             <element name="identityvalue" type="int"></element>
+            <element name="title" type="string"></element>
             <element name="firstName" type="string"></element>
             <element name="lastName" type="string"></element>
             <element name="birthDate" type="string"></element>
+            <element name="identityTypeCode" type="int"></element>
+            <element name="deliveryD" type="string"></element>
+            <element name="address" type="string"></element>
+            <element name="commune" type="string"></element>
+            <element name="wilaya" type="string"></element>
         </sequence>
     </complexType>
 
@@ -82,15 +98,18 @@
             <element name="status" type="boolean"></element>
         </sequence>
     </complexType>
-    <element name="InsertCntractCrmResuest"
+
+    <element name="InsertContractCrmRequest"
              type="tns:InsertContractCrmRequest">
     </element>
 
     <complexType name="InsertContractCrmRequest">
         <sequence>
             <element name="id" type="int"></element>
-            <element name="identityValue" type="int"></element>
             <element name="iccid" type="int"></element>
+            <element name="identityValue" type="int"></element>
+            <element name="OfferPromotype" type="string"></element>
+            <element name="networkType" type="string"></element>
         </sequence>
     </complexType>
 
@@ -107,11 +126,21 @@
 
     <complexType name="InsertInfoRequest">
         <sequence>
-            <element name="IdentityValue" type="int"></element>
+            <element name="Iccid" type="int"></element>
+            <element name="OfferPromotype" type="string"></element>
+            <element name="networkType" type="string"></element>
+            <element name="title" type="string"></element>
             <element name="FirstName" type="string"></element>
             <element name="LastName" type="string"></element>
             <element name="BirthDate" type="string"></element>
-            <element name="Iccid" type="int"></element>
+            <element name="identityTypeCode" type="int"></element>
+            <element name="IdentityValue" type="int"></element>
+            <element name="deliveryD" type="string"></element>
+            <element name="address" type="string"></element>
+            <element name="commune" type="string"></element>
+            <element name="wilaya" type="string"></element>
+
+
         </sequence>
     </complexType>
 

@@ -11,6 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+
+import javax.persistence.Column;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.StringReader;
@@ -39,8 +41,7 @@ public class EmployeeServiceImpl {
     private ContractRepo contractRepo;
     private CustomerCRMRepo customerCRMRepo;
     private ContractCRMRepo contractCRMRepo;
-    //  @Autowired
-    //private WebServiceTemplate webServiceTemplate;
+
 
 
     @Autowired
@@ -55,14 +56,12 @@ public class EmployeeServiceImpl {
     }
 
 
-    boolean insertCustomer(int identityValue, String firstName, String lastName, String birthDate) {
-
-
-
+    boolean insertCustomer(int identityValue, String title ,String firstName, String lastName, String birthDate, int identityTypeCode, String deliveryD, String address , String commune, String wilaya) {
         Log log = new Log();
         log.setServiceName("SetCustomer");
         log.setStatus("INIT");
-        log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
+        log.setXml(generateXmlRequest( identityValue,  title , firstName,  lastName,  birthDate,  identityTypeCode,  deliveryD,  address ,  commune,  wilaya)
+);
         log.setSource("DIGIT");
         log.setDestination("BSCS");
 
@@ -75,12 +74,19 @@ public class EmployeeServiceImpl {
             Memo memo3 = new Memo();
 
             customer.setIdentityValue(identityValue);
+            customer.settitle(title);
             customer.setFirstName(firstName);
             customer.setLastName(lastName);
             customer.setBirthDate(birthDate);
             customer.setAction("CREATE");
             customer.setcustType("C");
-            customer.setidentityTypeCode(2);
+            customer.setidentityId(2);
+            customer.setidentityTypeCode(identityTypeCode);
+            customer.setdeliveryD(deliveryD);
+            customer.setaddress(address);
+            customer.setcommune(commune);
+            customer.setwilaya(wilaya);
+
 
             // Save the customer to generate the customerId
             customer = customerRepo.saveAndFlush(customer);
@@ -126,7 +132,7 @@ public class EmployeeServiceImpl {
             return false; // Return false if there was an error during the insertion
         }
     }
-    private String generateXmlRequest(int identityValue, String firstName, String lastName, String birthDate) {
+    private String generateXmlRequest(int identityValue, String title ,String firstName, String lastName, String birthDate, int identityTypeCode, String deliveryD, String address , String commune, String wilaya) {
         try {
             // Create the JAXBContext for the desired class
             JAXBContext context = JAXBContext.newInstance(InsertCustomerRequestWrapper.class);
@@ -138,12 +144,19 @@ public class EmployeeServiceImpl {
             // Create an instance of your request wrapper class
             InsertCustomerRequestWrapper wrapper = new InsertCustomerRequestWrapper();
 
-            // Create an instance of the original request class and set the values
+                // Create an instance of the original request class and set the values
             InsertCustomerRequest request = new InsertCustomerRequest();
             request.setIdentityvalue(identityValue);
+            request.setTitle(title);
             request.setFirstName(firstName);
             request.setLastName(lastName);
             request.setBirthDate(birthDate);
+            request.setAddress(address);
+            request.setDeliveryD(deliveryD);
+            request.setCommune(commune);
+            request.setWilaya(wilaya);
+            request.setIdentityTypeCode(identityTypeCode);
+
 
             // Set the request object in the wrapper
             wrapper.setRequest(request);
@@ -158,7 +171,8 @@ public class EmployeeServiceImpl {
         }
     }
 
- public boolean insertContract(int ICCID, int identityValue) {
+
+ public boolean insertContract(int ICCID, int identityValue,String OfferPromotype,String networkType) {
      Contract contract = new Contract();
      Log log = new Log();
      Memo memo4 = new Memo();
@@ -168,12 +182,13 @@ public class EmployeeServiceImpl {
      contract.setICCID(ICCID);
      contract.setidentityValue(identityValue);
      contract.setAction("CREATE");
-     contract.setOfferPromotype("D_IBIZA1500");
+     contract.setOfferPromotype(OfferPromotype);
+     contract.setnetworkType(networkType);
 
      try {
          log.setServiceName("SetContract");
          log.setStatus("INIT");
-         log.setXml(generateXmlRequestContract(ICCID, identityValue));
+         log.setXml(generateXmlRequestContract(ICCID, identityValue,OfferPromotype,networkType));
          log.setSource("DIGIT");
          log.setDestination("BSCS");
 
@@ -193,11 +208,13 @@ public class EmployeeServiceImpl {
          logRepo.save(log); // Update the log entry with contractId and final status
          System.out.println("the log table after contract creation:"+log);
 
-         Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
-         if (customerId != null) {
-             memo4.setCcId(customerId);
-             memo5.setCcId(customerId);
-             memo6.setCcId(customerId);
+         Integer coId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+         if (coId != null) {
+             memo4.setCcId(coId);
+             memo5.setCcId(coId);
+             memo6.setCcId(coId);
+             contract.setcustomerId(coId);
+
          }
 
 
@@ -231,7 +248,7 @@ public class EmployeeServiceImpl {
  }
 
 
-    private String generateXmlRequestContract(int ICCID, int identityValue) {
+    private String generateXmlRequestContract(int ICCID, int identityValue,String OfferPromotype,String networkType) {
         try {
             // Create the JAXBContext for the desired class
             JAXBContext context = JAXBContext.newInstance(InsertContractRequestWrapper.class);
@@ -247,6 +264,9 @@ public class EmployeeServiceImpl {
             InsertContractRequest request = new InsertContractRequest();
             request.setICCID(ICCID);
             request.setIdentityvalue(identityValue);
+            request.setOfferPromotype(OfferPromotype);
+            request.setNetworkType(networkType);
+
 
             // Set the request object in the wrapper
             wrapper.setRequest(request);
@@ -276,18 +296,6 @@ public class EmployeeServiceImpl {
         System.out.println("call notifyEsb");
 
 
-      /*  Log log1 = new Log();
-        log1.setStatus("success");
-        log1.setXml(xml);
-        log1.setSource("BSCS");
-        log1.setDestination("CRM");
-        log1.setServiceName("SetContract");
-        if (serviceName.equals("SetCustomer")) {
-            log1.setServiceName("SetCustomer");
-        } else if  (serviceName.equals("SetContract"))  {
-            log1.setServiceName("SetContract");
-        }*/
-
 
 
         try {
@@ -300,14 +308,28 @@ public class EmployeeServiceImpl {
             if (serviceName.equals("SetCustomer")) {
                 // Extract values for SetCustomer service
                 NodeList identityValueList = doc.getElementsByTagName("ns2:identityvalue");
+                NodeList titleList = doc.getElementsByTagName("ns2:title");
                 NodeList firstNameList = doc.getElementsByTagName("ns2:firstName");
                 NodeList lastNameList = doc.getElementsByTagName("ns2:lastName");
                 NodeList birthDateList = doc.getElementsByTagName("ns2:birthDate");
+                NodeList identityTypeCodeList = doc.getElementsByTagName("ns2:identityTypeCode");
+                NodeList deliveryDList = doc.getElementsByTagName("ns2:deliveryD");
+                NodeList addressList = doc.getElementsByTagName("ns2:address");
+                NodeList communeList = doc.getElementsByTagName("ns2:commune");
+                NodeList wilayaList = doc.getElementsByTagName("ns2:wilaya");
+
+
 
                 int identityValue = Integer.parseInt(identityValueList.item(0).getTextContent());
+                String title = titleList.item(0).getTextContent();
                 String firstName = firstNameList.item(0).getTextContent();
                 String lastName = lastNameList.item(0).getTextContent();
                 String birthDate = birthDateList.item(0).getTextContent();
+                int identityTypeCode = Integer.parseInt(identityTypeCodeList.item(0).getTextContent());
+                String deliveryD = deliveryDList.item(0).getTextContent();
+                String address = addressList.item(0).getTextContent();
+                String commune = communeList.item(0).getTextContent();
+                String wilaya = wilayaList.item(0).getTextContent();
 
                 // Print the extracted values
                 System.out.println("Identity Value: " + identityValue);
@@ -318,7 +340,7 @@ public class EmployeeServiceImpl {
 
 
                 // Insert data into CustomerCRM table
-                boolean result = insertCustomerCrm(id, identityValue, firstName, lastName, birthDate);
+                boolean result = insertCustomerCrm(id,identityValue,  title , firstName,  lastName,  birthDate,  identityTypeCode,  deliveryD,  address ,  commune,  wilaya);
 
                 if (result) {
                     System.out.println("Data inserted into CustomerCRM table successfully.");
@@ -331,13 +353,18 @@ public class EmployeeServiceImpl {
                 // Extract values for SetContract service
                 NodeList identityValueList = doc.getElementsByTagName("ns2:identityvalue");
                 NodeList iccidList = doc.getElementsByTagName("ns2:ICCID");
+                NodeList OfferPromotypeList = doc.getElementsByTagName("ns2:OfferPromotype");
+                NodeList networkTypeList = doc.getElementsByTagName("ns2:networkType");
 
                 int identityValue = Integer.parseInt(identityValueList.item(0).getTextContent());
                 int iccid = Integer.parseInt(iccidList.item(0).getTextContent());
+                String OfferPromotype = OfferPromotypeList.item(0).getTextContent();
+                String networkType = networkTypeList.item(0).getTextContent();
+
 
 
                 // Insert data into contract table
-                boolean result = insertContractCrm(id, identityValue, iccid);
+                boolean result = insertContractCrm(id, identityValue, iccid,OfferPromotype,networkType);
 
                 if (result) {
                     System.out.println("Data inserted into contract table successfully.");
@@ -359,22 +386,31 @@ public class EmployeeServiceImpl {
 
 
     @Transactional
-    public boolean insertCustomerCrm(int id, int identityValue, String firstName, String lastName, String birthDate) {
+    public boolean insertCustomerCrm(int id,int identityValue, String title ,String firstName, String lastName, String birthDate, int identityTypeCode, String deliveryD, String address , String commune, String wilaya) {
 
 
 
         CustomerCRM customer = new CustomerCRM();
         customer.setCustomerId(id);
         customer.setIdentityValue(identityValue);
+        customer.settitle(title);
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
         customer.setBirthDate(birthDate);
+        customer.setAction("CREATE");
+        customer.setcustType("C");
+        customer.setidentityId(2);
+        customer.setidentityTypeCode(identityTypeCode);
+        customer.setdeliveryD(deliveryD);
+        customer.setaddress(address);
+        customer.setcommune(commune);
+        customer.setwilaya(wilaya);
 
         Log log = new Log();
         log.setMainInput(id);
         log.setServiceName("SetCustomer");
         log.setStatus("success");
-        log.setXml(generateXmlRequest(identityValue, firstName, lastName, birthDate));
+        log.setXml(generateXmlRequest(identityValue,  title , firstName,  lastName,  birthDate,  identityTypeCode,  deliveryD,  address ,  commune,  wilaya));
         log.setSource("CRM");
         log.setDestination("ESB");
 
@@ -390,13 +426,13 @@ public class EmployeeServiceImpl {
         }
     }
     @Transactional
-    public boolean insertContractCrm(int id, int identityValue, int iccid) {
+    public boolean insertContractCrm(int id, int identityValue, int iccid,String OfferPromotype,String networkType) {
 
         Log log = new Log();
         log.setMainInput(id);
         log.setServiceName("SetContract");
         log.setStatus("success");
-        log.setXml(generateXmlRequestContract(iccid, identityValue));
+        log.setXml(generateXmlRequestContract(iccid, identityValue,OfferPromotype,networkType));
         log.setSource("CRM");
         log.setDestination("ESB");
 
@@ -418,7 +454,7 @@ public class EmployeeServiceImpl {
 
 
 
-    public boolean insertInfo(int identityValue, String firstName, String lastName, String birthDate, int iccid) {
+    public boolean insertInfo(int identityValue,String title ,String firstName, String lastName, String birthDate, int iccid,int identityTypeCode, String deliveryD, String address , String commune, String wilaya,String OfferPromotype,String networkType) {
         try {
             // Validate input types and non-empty values
             if (!(identityValue > 0) || firstName.isEmpty() || lastName.isEmpty() || birthDate.isEmpty() || iccid < 0) {
@@ -443,8 +479,8 @@ public class EmployeeServiceImpl {
                 return false; // Return false if any value is empty, has an incorrect type, identityValue is not a positive integer, or iccid is negative
             }
 
-            boolean customerInserted = insertCustomer(identityValue, firstName, lastName, birthDate);
-            boolean contractInserted = insertContract(iccid, identityValue);
+            boolean customerInserted = insertCustomer(identityValue,title, firstName, lastName, birthDate,identityTypeCode,deliveryD,  address ,  commune,  wilaya);
+            boolean contractInserted = insertContract(iccid, identityValue, OfferPromotype, networkType);
             System.out.println("Success");
 
             return true; // Return true if the insertion was successful

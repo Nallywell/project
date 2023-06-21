@@ -31,6 +31,19 @@ public class Customer {
     private String custType;
     @Column(name = "IDENTITY_TYPE_CODE")
     private int identityTypeCode;
+    @Column(name = "IDENTITYID")
+    private int identityId;
+    @Column(name = "DELIVERYD")
+    private String deliveryD;
+
+    @Column(name = "ADDRESS")
+    private String address;
+    @Column(name = "COMMUNE")
+    private String commune;
+    @Column(name = "WILAYA")
+    private String wilaya;
+    @Column(name = "TITLE")
+    private String title;
     public Customer() {
     }
 
@@ -87,22 +100,74 @@ public class Customer {
     public void setcustType(String custType) {
         this.custType = custType;
     }
-    public int identityTypeCode() {
+    public int getidentityTypeCode() {
         return identityTypeCode;
     }
 
     public void setidentityTypeCode(int identityTypeCode) {
         this.identityTypeCode = identityTypeCode;
     }
+    public int getidentityId() {
+        return identityId;
+    }
+
+    public void setidentityId(int identityId) {
+        this.identityId = identityId;
+    }
+    public String getdeliveryD() {
+        return deliveryD;
+    }
+
+    public void setdeliveryD(String deliveryD) {
+        this.deliveryD = deliveryD;
+    }
+    public String getaddress() {
+        return address;
+    }
+
+    public void setaddress(String address) {
+        this.address = address;
+    }
+    public String getcommune() {
+        return commune;
+    }
+
+    public void setcommune(String commune) {
+        this.commune = commune;
+    }
+    public String getwilaya() {
+        return wilaya;
+    }
+
+    public void setwilaya(String wilaya) {
+        this.wilaya = wilaya;
+    }
+    public String gettitle() {
+        return title;
+    }
+
+    public void settitle(String title) {
+        this.title = title;
+    }
+
 
     @Override
     public String toString() {
         return "Customer{" +
                 "identityValue=" + identityValue +
+                ", title='" + title + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", customerId='" + customerId + '\'' +
                 ", birthDate='" + birthDate + '\'' +
+                ", identityTypeCode='" + identityTypeCode + '\'' +
+                ", deliveryD='" + deliveryD + '\'' +
+                ", address='" + address + '\'' +
+                ", commune='" + commune + '\'' +
+                ", wilaya='" + wilaya + '\'' +
+
+
+
                 '}';
     }
 }

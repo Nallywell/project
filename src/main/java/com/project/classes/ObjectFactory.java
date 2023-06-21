@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.06 à 05:13:53 PM CEST 
+// Généré le : 2023.06.21 à 11:22:37 PM CEST 
 //
 
 
@@ -45,7 +45,7 @@ public class ObjectFactory {
     private final static QName _InsertContractCrmResponse_QNAME = new QName("http://project.com/classes", "InsertContractCrmResponse");
     private final static QName _InsertContractResponse_QNAME = new QName("http://project.com/classes", "InsertContractResponse");
     private final static QName _GetAllCustomerRequest_QNAME = new QName("http://project.com/classes", "GetAllCustomerRequest");
-    private final static QName _InsertCntractCrmResuest_QNAME = new QName("http://project.com/classes", "InsertCntractCrmResuest");
+    private final static QName _InsertContractCrmRequest_QNAME = new QName("http://project.com/classes", "InsertContractCrmRequest");
     private final static QName _InsertCustomerRequest_QNAME = new QName("http://project.com/classes", "InsertCustomerRequest");
     private final static QName _NotifyESBRequest_QNAME = new QName("http://project.com/classes", "NotifyESBRequest");
     private final static QName _GetAllContractCRMsRequest_QNAME = new QName("http://project.com/classes", "GetAllContractCRMsRequest");
@@ -433,9 +433,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link InsertContractCrmRequest }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertCntractCrmResuest")
-    public JAXBElement<InsertContractCrmRequest> createInsertCntractCrmResuest(InsertContractCrmRequest value) {
-        return new JAXBElement<InsertContractCrmRequest>(_InsertCntractCrmResuest_QNAME, InsertContractCrmRequest.class, null, value);
+    @XmlElementDecl(namespace = "http://project.com/classes", name = "InsertContractCrmRequest")
+    public JAXBElement<InsertContractCrmRequest> createInsertContractCrmRequest(InsertContractCrmRequest value) {
+        return new JAXBElement<InsertContractCrmRequest>(_InsertContractCrmRequest_QNAME, InsertContractCrmRequest.class, null, value);
     }
 
     /**

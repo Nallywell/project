@@ -35,7 +35,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertCustomerResponse> insertCustomerResponse(@RequestPayload InsertCustomerRequest request) {
         InsertCustomerResponse response = new InsertCustomerResponse();
-        employeeService.insertCustomer(request.getIdentityvalue(), request.getFirstName(), request.getLastName(), request.getBirthDate());
+        employeeService.insertCustomer(request.getIdentityvalue(),request.getTitle(), request.getFirstName(), request.getLastName(), request.getBirthDate(),request.getIdentityTypeCode(),request.getDeliveryD(),request.getAddress(),request.getCommune(),request.getWilaya());
         response.setStatus(true);
         return new ObjectFactory().createInsertCustomerResponse(response);
     }
@@ -44,7 +44,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertContractResponse> insertContractResponse(@RequestPayload InsertContractRequest request) {
         InsertContractResponse response = new InsertContractResponse();
-        employeeService.insertContract(request.getICCID(), request.getIdentityvalue());
+        employeeService.insertContract(request.getICCID(), request.getIdentityvalue(),request.getOfferPromotype(),request.getNetworkType());
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
     }
@@ -70,7 +70,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertCustomerCrmResponse> InsertCustomerCrmResponse(@RequestPayload InsertCustomerCrmRequest request) {
      InsertCustomerCrmResponse response = new InsertCustomerCrmResponse();
-     boolean result = employeeService.insertCustomerCrm(request.getId(), request.getIdentityvalue(), request.getFirstName(), request.getLastName(), request.getBirthDate());
+     boolean result = employeeService.insertCustomerCrm(request.getId(), request.getIdentityvalue(),request.getTitle(), request.getFirstName(), request.getLastName(), request.getBirthDate(),request.getIdentityTypeCode(),request.getDeliveryD(),request.getAddress(),request.getCommune(),request.getWilaya());
      response.setStatus(result);
         return new ObjectFactory().createInsertCustomerCrmResponse(response);
     }
@@ -80,7 +80,7 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertContractCrmResponse> InsertContractCrmResponse(@RequestPayload InsertContractCrmRequest request) {
         InsertContractCrmResponse response = new InsertContractCrmResponse();
-        boolean result = employeeService.insertContractCrm(request.getId(), request.getIdentityValue(), request.getIccid());
+        boolean result = employeeService.insertContractCrm(request.getId(), request.getIdentityValue(), request.getIccid(),request.getOfferPromotype(),request.getNetworkType());
         response.setStatus(result);
         return new ObjectFactory().createInsertContractCrmResponse(response);
     }
@@ -88,8 +88,8 @@ public class EndPoifntConfiguration {
     @ResponsePayload
     public JAXBElement<InsertInfoResponse> InsertInfoResponse(@RequestPayload InsertInfoRequest request) {
         InsertInfoResponse response = new InsertInfoResponse();
-        boolean result = employeeService.insertInfo(request.getIdentityValue(), request.getFirstName(),
-                request.getLastName(), request.getBirthDate(), request.getIccid());
+        boolean result = employeeService.insertInfo(request.getIdentityValue(),request.getTitle(), request.getFirstName(),
+                request.getLastName(), request.getBirthDate(), request.getIccid(),request.getIdentityTypeCode(),request.getDeliveryD(),request.getAddress(),request.getCommune(),request.getWilaya(),request.getOfferPromotype(),request.getNetworkType());
         response.setStatus(result);
         return new ObjectFactory().createInsertInfoResponse(response);
 
