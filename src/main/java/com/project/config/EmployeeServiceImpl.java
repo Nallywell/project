@@ -433,6 +433,7 @@ public class EmployeeServiceImpl {
         }
     }
     @Transactional
+
     public boolean insertContractCrm(int id, int identityValue, int iccid,String OfferPromotype,String networkType) {
 
         Log log = new Log();
@@ -458,6 +459,7 @@ public class EmployeeServiceImpl {
             return false;
         }
     }
+
 
 
 

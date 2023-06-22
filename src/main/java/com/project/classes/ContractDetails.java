@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.21 à 11:22:37 PM CEST 
+// Généré le : 2023.06.22 à 03:35:24 PM CEST 
 //
 
 
@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="action" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="OfferPromotype" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="MSISDN" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +44,8 @@ import javax.xml.bind.annotation.XmlType;
     "identityValue",
     "iccid",
     "action",
-    "offerPromotype"
+    "offerPromotype",
+    "msisdn"
 })
 public class ContractDetails {
 
@@ -55,6 +57,8 @@ public class ContractDetails {
     protected String action;
     @XmlElement(name = "OfferPromotype", required = true)
     protected String offerPromotype;
+    @XmlElement(name = "MSISDN")
+    protected int msisdn;
 
     /**
      * Obtient la valeur de la propriété contractId.
@@ -150,6 +154,22 @@ public class ContractDetails {
      */
     public void setOfferPromotype(String value) {
         this.offerPromotype = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété msisdn.
+     * 
+     */
+    public int getMSISDN() {
+        return msisdn;
+    }
+
+    /**
+     * Définit la valeur de la propriété msisdn.
+     * 
+     */
+    public void setMSISDN(int value) {
+        this.msisdn = value;
     }
 
 }
