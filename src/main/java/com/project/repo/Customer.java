@@ -44,6 +44,8 @@ public class Customer {
     private String wilaya;
     @Column(name = "TITLE")
     private String title;
+
+
     public Customer() {
     }
 

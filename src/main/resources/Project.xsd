@@ -210,6 +210,7 @@
             <element name="ICCID" type="int"></element>
             <element name="action" type="string"></element>
             <element name="OfferPromotype" type="string"></element>
+            <element name="MSISDN" type="int"></element>
         </sequence>
     </complexType>
 
@@ -240,6 +241,7 @@
             <element name="identityValue" type="int"></element>
             <element name="action" type="string"></element>
             <element name="OfferPromotype" type="string"></element>
+            <element name="MSISDN" type="int"></element>
         </sequence>
     </complexType>
 

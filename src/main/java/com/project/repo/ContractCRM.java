@@ -25,6 +25,9 @@ public class ContractCRM {
     private int customerId;
     @Column(name = "NETWORKTYPE")
     private String networkType;
+    @Column(name = "MSISDN")
+    private int MSISDN;
+
     public ContractCRM() {
     }
 
@@ -79,6 +82,13 @@ public class ContractCRM {
 
     public void setnetworkType(String networkType) {
         this.networkType = networkType;
+    }
+    public int getMSISDN() {
+        return MSISDN;
+    }
+
+    public void setMSISDN(int MSISDN) {
+        this.MSISDN = MSISDN;
     }
     @Override
     public String toString() {

@@ -184,6 +184,11 @@ public class EmployeeServiceImpl {
      contract.setAction("CREATE");
      contract.setOfferPromotype(OfferPromotype);
      contract.setnetworkType(networkType);
+     Integer customerId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+     if (customerId != null) {
+         contract.setcustomerId(customerId);
+     }
+
 
      try {
          log.setServiceName("SetContract");
@@ -199,6 +204,7 @@ public class EmployeeServiceImpl {
          contract = contractRepo.saveAndFlush(contract);
          int contractId = contract.getContractId();
 
+
          log.setMainInput(contractId);
          log.setStatus("OK");
          log.setSource("BSCS");
@@ -208,12 +214,13 @@ public class EmployeeServiceImpl {
          logRepo.save(log); // Update the log entry with contractId and final status
          System.out.println("the log table after contract creation:"+log);
 
-         Integer coId = customerRepo.findCustomerIdByIdentityValue(identityValue);
-         if (coId != null) {
-             memo4.setCcId(coId);
-             memo5.setCcId(coId);
-             memo6.setCcId(coId);
-             contract.setcustomerId(coId);
+         Integer ccId = customerRepo.findCustomerIdByIdentityValue(identityValue);
+         if (ccId != null) {
+
+             memo4.setCcId(ccId);
+             memo5.setCcId(ccId);
+             memo6.setCcId(ccId);
+
 
          }
 
