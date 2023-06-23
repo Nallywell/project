@@ -500,13 +500,13 @@ public class EmployeeServiceImpl {
     }
 
 
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomer() {
         return customerRepo.findAll();
     }
     public List<Contract> getAllContracts() {
         return contractRepo.findAll();
     }
-    public List<ContractCRM> getAllContractCRM() {
+    public List<ContractCRM> getAllContractCRMs() {
         return contractCRMRepo.findAll();
     }
     public List<CustomerCRM> getAllCustomerCRM() {
@@ -516,7 +516,7 @@ public class EmployeeServiceImpl {
         return logRepo.findAll();
     }
 
-    public List<Memo> getAllMemo() {
+    public List<Memo> getAllMemos() {
         return memoRepo.findAll();
     }
 

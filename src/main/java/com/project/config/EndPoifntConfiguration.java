@@ -48,14 +48,7 @@ public class EndPoifntConfiguration {
         response.setStatus(true);
         return new ObjectFactory().createInsertContractResponse(response);
     }
-  /*  @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyLogRequest")
-    @ResponsePayload
-    public JAXBElement<NotifyLogResponse> notifyLogResponse(@RequestPayload NotifyLogRequest request) {
-        NotifyLogResponse response = new NotifyLogResponse();
-        employeeService.NotifyESB(request.getId(),request.getServiceName());
-        response.setStatus(true);
-        return new ObjectFactory().createNotifyLogResponse(response);
-    }*/
+
   @PayloadRoot(namespace = "http://project.com/classes", localPart = "NotifyESBRequest")
   @ResponsePayload
   public JAXBElement<NotifyESBResponse> notifyESBResponse(@RequestPayload NotifyESBRequest request) {
@@ -100,7 +93,7 @@ public class EndPoifntConfiguration {
     public JAXBElement<GetAllCustomerResponse> getAllCustomerResponse(@RequestPayload GetAllCustomerRequest request) {
         GetAllCustomerResponse response = new GetAllCustomerResponse();
         List<CustomerDetails> customerDetailsList = new ArrayList<>();
-        List<Customer> customerList = employeeService.getAllCustomers();
+        List<Customer> customerList = employeeService.getAllCustomer();
         for (Customer customer : customerList) {
             CustomerDetails customerDetails = new CustomerDetails();
             BeanUtils.copyProperties(customer, customerDetails);
@@ -133,7 +126,7 @@ public class EndPoifntConfiguration {
     public JAXBElement<GetAllContractCRMsResponse> GetAllContractCRMsResponse(@RequestPayload GetAllContractCRMsRequest request) {
         GetAllContractCRMsResponse response = new GetAllContractCRMsResponse();
         List<ContractCRMDetails> contractDetailsList = new ArrayList<>();
-        List<ContractCRM>contractList = employeeService.getAllContractCRM();
+        List<ContractCRM>contractList = employeeService.getAllContractCRMs();
         for (ContractCRM contract : contractList) {
             ContractCRMDetails contractDetails = new ContractCRMDetails();
             BeanUtils.copyProperties(contract, contractDetails);
@@ -176,7 +169,7 @@ public class EndPoifntConfiguration {
     public JAXBElement<GetAllMemosResponse> GetAllMemosResponse(@RequestPayload GetAllMemosRequest request) {
         GetAllMemosResponse response = new GetAllMemosResponse();
         List<MemoDetails> memoDetailsList = new ArrayList<>();
-        List<Memo>memoList = employeeService.getAllMemo();
+        List<Memo>memoList = employeeService.getAllMemos();
         for (Memo memo : memoList) {
             MemoDetails memoDetails = new MemoDetails();
             BeanUtils.copyProperties(memo, memoDetails);

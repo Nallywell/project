@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.22 à 03:35:24 PM CEST 
+// Généré le : 2023.06.23 à 02:02:54 PM CEST 
 //
 
 
@@ -24,10 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="TransactionId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="mainInput" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="serviceName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="xml" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Source" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Destination" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,13 +41,18 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LogDetails", propOrder = {
+    "transactionId",
     "mainInput",
     "serviceName",
     "xml",
-    "status"
+    "status",
+    "source",
+    "destination"
 })
 public class LogDetails {
 
+    @XmlElement(name = "TransactionId")
+    protected int transactionId;
     protected int mainInput;
     @XmlElement(required = true)
     protected String serviceName;
@@ -52,6 +60,26 @@ public class LogDetails {
     protected String xml;
     @XmlElement(required = true)
     protected String status;
+    @XmlElement(name = "Source", required = true)
+    protected String source;
+    @XmlElement(name = "Destination", required = true)
+    protected String destination;
+
+    /**
+     * Obtient la valeur de la propriété transactionId.
+     * 
+     */
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    /**
+     * Définit la valeur de la propriété transactionId.
+     * 
+     */
+    public void setTransactionId(int value) {
+        this.transactionId = value;
+    }
 
     /**
      * Obtient la valeur de la propriété mainInput.
@@ -139,6 +167,54 @@ public class LogDetails {
      */
     public void setStatus(String value) {
         this.status = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété source.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * Définit la valeur de la propriété source.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSource(String value) {
+        this.source = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété destination.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Définit la valeur de la propriété destination.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDestination(String value) {
+        this.destination = value;
     }
 
 }

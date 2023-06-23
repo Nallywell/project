@@ -152,8 +152,6 @@
         </sequence>
     </complexType>
 
-
-
     <element name="GetAllCustomerRequest"
              type="tns:GetAllCustomerRequest">
     </element>
@@ -174,13 +172,8 @@
     <complexType name="CustomerDetails">
         <sequence>
             <element name="customerId" type="int"></element>
-            <element name="identityValue" type="int"></element>
             <element name="firstName" type="string"></element>
             <element name="lastName" type="string"></element>
-            <element name="birthDate" type="string"></element>
-            <element name="action" type="string"></element>
-            <element name="custType" type="string"></element>
-            <element name="identityTypeCode" type="string"></element>
         </sequence>
     </complexType>
 
@@ -206,11 +199,11 @@
     <complexType name="ContractDetails">
         <sequence>
             <element name="contractId" type="int"></element>
-            <element name="identityValue" type="int"></element>
-            <element name="ICCID" type="int"></element>
-            <element name="action" type="string"></element>
-            <element name="OfferPromotype" type="string"></element>
             <element name="MSISDN" type="int"></element>
+            <element name="OfferPromotype" type="string"></element>
+            <element name="ICCID" type="int"></element>
+            <element name="customerId" type="int"></element>
+
         </sequence>
     </complexType>
 
@@ -237,11 +230,10 @@
     <complexType name="ContractCRMDetails">
         <sequence>
             <element name="contractId" type="int"></element>
-            <element name="ICCID" type="int"></element>
-            <element name="identityValue" type="int"></element>
-            <element name="action" type="string"></element>
-            <element name="OfferPromotype" type="string"></element>
             <element name="MSISDN" type="int"></element>
+            <element name="OfferPromotype" type="string"></element>
+            <element name="ICCID" type="int"></element>
+            <element name="customerId" type="int"></element>
         </sequence>
     </complexType>
 
@@ -269,13 +261,9 @@
     <complexType name="CustomerCRMDetails">
         <sequence>
             <element name="customerId" type="int"></element>
-            <element name="identityValue" type="int"></element>
             <element name="firstName" type="string"></element>
             <element name="lastName" type="string"></element>
-            <element name="birthDate" type="string"></element>
-            <element name="action" type="string"></element>
-            <element name="custType" type="string"></element>
-            <element name="identityTypeCode" type="string"></element>
+
         </sequence>
     </complexType>
 
@@ -303,10 +291,13 @@
     </complexType>
     <complexType name="LogDetails">
         <sequence>
+            <element name="TransactionId" type="int"></element>
             <element name="mainInput" type="int"></element>
             <element name="serviceName" type="string"></element>
             <element name="xml" type="string"></element>
             <element name="status" type="string"></element>
+            <element name="Source" type="string"></element>
+            <element name="Destination" type="string"></element>
 
         </sequence>
     </complexType>
@@ -339,6 +330,5 @@
             <element name="createBy" type="string"></element>
         </sequence>
     </complexType>
-
 
 </schema>

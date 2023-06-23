@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2023.06.22 à 03:35:24 PM CEST 
+// Généré le : 2023.06.23 à 02:02:54 PM CEST 
 //
 
 
@@ -25,11 +25,10 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="contractId" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="identityValue" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="action" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="OfferPromotype" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="MSISDN" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="OfferPromotype" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="ICCID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="customerId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,24 +40,21 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContractDetails", propOrder = {
     "contractId",
-    "identityValue",
-    "iccid",
-    "action",
+    "msisdn",
     "offerPromotype",
-    "msisdn"
+    "iccid",
+    "customerId"
 })
 public class ContractDetails {
 
     protected int contractId;
-    protected int identityValue;
-    @XmlElement(name = "ICCID")
-    protected int iccid;
-    @XmlElement(required = true)
-    protected String action;
-    @XmlElement(name = "OfferPromotype", required = true)
-    protected String offerPromotype;
     @XmlElement(name = "MSISDN")
     protected int msisdn;
+    @XmlElement(name = "OfferPromotype", required = true)
+    protected String offerPromotype;
+    @XmlElement(name = "ICCID")
+    protected int iccid;
+    protected int customerId;
 
     /**
      * Obtient la valeur de la propriété contractId.
@@ -77,59 +73,19 @@ public class ContractDetails {
     }
 
     /**
-     * Obtient la valeur de la propriété identityValue.
+     * Obtient la valeur de la propriété msisdn.
      * 
      */
-    public int getIdentityValue() {
-        return identityValue;
+    public int getMSISDN() {
+        return msisdn;
     }
 
     /**
-     * Définit la valeur de la propriété identityValue.
+     * Définit la valeur de la propriété msisdn.
      * 
      */
-    public void setIdentityValue(int value) {
-        this.identityValue = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété iccid.
-     * 
-     */
-    public int getICCID() {
-        return iccid;
-    }
-
-    /**
-     * Définit la valeur de la propriété iccid.
-     * 
-     */
-    public void setICCID(int value) {
-        this.iccid = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété action.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAction() {
-        return action;
-    }
-
-    /**
-     * Définit la valeur de la propriété action.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAction(String value) {
-        this.action = value;
+    public void setMSISDN(int value) {
+        this.msisdn = value;
     }
 
     /**
@@ -157,19 +113,35 @@ public class ContractDetails {
     }
 
     /**
-     * Obtient la valeur de la propriété msisdn.
+     * Obtient la valeur de la propriété iccid.
      * 
      */
-    public int getMSISDN() {
-        return msisdn;
+    public int getICCID() {
+        return iccid;
     }
 
     /**
-     * Définit la valeur de la propriété msisdn.
+     * Définit la valeur de la propriété iccid.
      * 
      */
-    public void setMSISDN(int value) {
-        this.msisdn = value;
+    public void setICCID(int value) {
+        this.iccid = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété customerId.
+     * 
+     */
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    /**
+     * Définit la valeur de la propriété customerId.
+     * 
+     */
+    public void setCustomerId(int value) {
+        this.customerId = value;
     }
 
 }
